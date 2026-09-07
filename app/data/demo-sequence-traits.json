@@ -1,0 +1,5386 @@
+{
+  "frames": [
+    {
+      "label": "An empty block",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0,
+        "txCount": 1,
+        "tokenCount": 0,
+        "nftCount": 0,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 0,
+        "tokenValueUsd": 0,
+        "portfolioValueUsd": 0,
+        "pricedTokenCount": 0,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": []
+      },
+      "traits": {
+        "wealthTier": 0,
+        "activityLevel": 0,
+        "diversityScore": 0,
+        "ageTier": "veteran",
+        "buildingCount": 3,
+        "buildingTypeWeights": {
+          "commercial": 0.25,
+          "residential": 0.25,
+          "civic": 0.25,
+          "park": 0.25
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 0,
+        "skyMood": "dawn",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 0,
+        "concentration": 0,
+        "topHoldings": [],
+        "holdingsByToken": {}
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T05:00",
+        "localHour": 5,
+        "skyMood": "dawn",
+        "weatherCondition": "clear",
+        "temperatureF": 52
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": false
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": false
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": false
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": false
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": false
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": false
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": false
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": false
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": false
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": false
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "First deposit",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0.02,
+        "txCount": 12,
+        "tokenCount": 0,
+        "nftCount": 0,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 37.6,
+        "tokenValueUsd": 0,
+        "portfolioValueUsd": 37.6,
+        "pricedTokenCount": 0,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": []
+      },
+      "traits": {
+        "wealthTier": 0,
+        "activityLevel": 1,
+        "diversityScore": 0,
+        "ageTier": "veteran",
+        "buildingCount": 7,
+        "buildingTypeWeights": {
+          "commercial": 0.131051383482728,
+          "residential": 0.38056073703476717,
+          "civic": 0.35733649599977685,
+          "park": 0.131051383482728
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 37.6,
+        "skyMood": "dawn",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 37.6,
+        "concentration": 0,
+        "topHoldings": [],
+        "holdingsByToken": {}
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T06:00",
+        "localHour": 6,
+        "skyMood": "dawn",
+        "weatherCondition": "clear",
+        "temperatureF": 55
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": false
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": false
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": false
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": false
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": false
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": false
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": false
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": false
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": false
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "First position",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0.03,
+        "txCount": 20,
+        "tokenCount": 1,
+        "nftCount": 0,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 0.6,
+            "priceUsd": 100,
+            "valueUsd": 60,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 56.4,
+        "tokenValueUsd": 60,
+        "portfolioValueUsd": 116.4,
+        "pricedTokenCount": 1,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000"
+        ]
+      },
+      "traits": {
+        "wealthTier": 1,
+        "activityLevel": 1,
+        "diversityScore": 1,
+        "ageTier": "veteran",
+        "buildingCount": 9,
+        "buildingTypeWeights": {
+          "commercial": 0.2090902026367061,
+          "residential": 0.3641934943827359,
+          "civic": 0.3221712016622048,
+          "park": 0.10454510131835305
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 116.4,
+        "skyMood": "day",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 116.4,
+        "concentration": 0.5154639175257731,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 0.6,
+            "priceUsd": 100,
+            "valueUsd": 60,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 60
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T08:00",
+        "localHour": 8,
+        "skyMood": "day",
+        "weatherCondition": "clear",
+        "temperatureF": 61
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": false
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": false
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": false
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": false
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": false
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": false
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": false
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": false
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "Trading regularly",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0.09,
+        "txCount": 100,
+        "tokenCount": 2,
+        "nftCount": 1,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 1.4,
+            "priceUsd": 100,
+            "valueUsd": 140,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 0.7,
+            "priceUsd": 100,
+            "valueUsd": 70,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 169.2,
+        "tokenValueUsd": 210,
+        "portfolioValueUsd": 379.2,
+        "pricedTokenCount": 2,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001"
+        ]
+      },
+      "traits": {
+        "wealthTier": 1,
+        "activityLevel": 2,
+        "diversityScore": 1,
+        "ageTier": "veteran",
+        "buildingCount": 13,
+        "buildingTypeWeights": {
+          "commercial": 0.18894575248281784,
+          "residential": 0.2993948841760355,
+          "civic": 0.30699561800468794,
+          "park": 0.20466374533645862
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 379.2,
+        "skyMood": "day",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 379.2,
+        "concentration": 0.3691983122362869,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 1.4,
+            "priceUsd": 100,
+            "valueUsd": 140,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 0.7,
+            "priceUsd": 100,
+            "valueUsd": 70,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 140,
+          "0xdemotoken000000000000000000000000000001": 70
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T10:00",
+        "localHour": 10,
+        "skyMood": "day",
+        "weatherCondition": "clear",
+        "temperatureF": 68
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": false
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": false
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": false
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": false
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "The block fills in",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0.18,
+        "txCount": 200,
+        "tokenCount": 4,
+        "nftCount": 1,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 3,
+            "priceUsd": 100,
+            "valueUsd": 300,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 1.8,
+            "priceUsd": 100,
+            "valueUsd": 180,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 2.4,
+            "priceUsd": 100,
+            "valueUsd": 240,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 1.2,
+            "priceUsd": 100,
+            "valueUsd": 120,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 338.4,
+        "tokenValueUsd": 840,
+        "portfolioValueUsd": 1178.4,
+        "pricedTokenCount": 4,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003"
+        ]
+      },
+      "traits": {
+        "wealthTier": 2,
+        "activityLevel": 2,
+        "diversityScore": 2,
+        "ageTier": "veteran",
+        "buildingCount": 14,
+        "buildingTypeWeights": {
+          "commercial": 0.2144622617559395,
+          "residential": 0.3025257330403939,
+          "civic": 0.30224519876952816,
+          "park": 0.18076680643413856
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 1178.4,
+        "skyMood": "day",
+        "weatherCondition": "cloudy",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 1178.4,
+        "concentration": 0.2545824847250509,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 3,
+            "priceUsd": 100,
+            "valueUsd": 300,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 1.8,
+            "priceUsd": 100,
+            "valueUsd": 180,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 2.4,
+            "priceUsd": 100,
+            "valueUsd": 240,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 1.2,
+            "priceUsd": 100,
+            "valueUsd": 120,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 300,
+          "0xdemotoken000000000000000000000000000001": 180,
+          "0xdemotoken000000000000000000000000000002": 240,
+          "0xdemotoken000000000000000000000000000003": 120
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T12:00",
+        "localHour": 12,
+        "skyMood": "day",
+        "weatherCondition": "cloudy",
+        "temperatureF": 74
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": false
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": false
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "Branching out",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0.35,
+        "txCount": 900,
+        "tokenCount": 4,
+        "nftCount": 2,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 6.2,
+            "priceUsd": 100,
+            "valueUsd": 620,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 4.8,
+            "priceUsd": 100,
+            "valueUsd": 480,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 2.9,
+            "priceUsd": 100,
+            "valueUsd": 290,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 2.1,
+            "priceUsd": 100,
+            "valueUsd": 210,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 658,
+        "tokenValueUsd": 1600,
+        "portfolioValueUsd": 2258,
+        "pricedTokenCount": 4,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003"
+        ]
+      },
+      "traits": {
+        "wealthTier": 2,
+        "activityLevel": 3,
+        "diversityScore": 2,
+        "ageTier": "veteran",
+        "buildingCount": 17,
+        "buildingTypeWeights": {
+          "commercial": 0.18530980646517126,
+          "residential": 0.2802968821272582,
+          "civic": 0.3194620559003303,
+          "park": 0.21493125550724027
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 2258,
+        "skyMood": "day",
+        "weatherCondition": "cloudy",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 2258,
+        "concentration": 0.2745792736935341,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 6.2,
+            "priceUsd": 100,
+            "valueUsd": 620,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 4.8,
+            "priceUsd": 100,
+            "valueUsd": 480,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 2.9,
+            "priceUsd": 100,
+            "valueUsd": 290,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 2.1,
+            "priceUsd": 100,
+            "valueUsd": 210,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 620,
+          "0xdemotoken000000000000000000000000000001": 480,
+          "0xdemotoken000000000000000000000000000002": 290,
+          "0xdemotoken000000000000000000000000000003": 210
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T14:00",
+        "localHour": 14,
+        "skyMood": "day",
+        "weatherCondition": "cloudy",
+        "temperatureF": 77
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": false
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "A regular on the block",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 0.7,
+        "txCount": 1800,
+        "tokenCount": 6,
+        "nftCount": 4,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 15,
+            "priceUsd": 100,
+            "valueUsd": 1500,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 9.8,
+            "priceUsd": 100,
+            "valueUsd": 980,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 7.2,
+            "priceUsd": 100,
+            "valueUsd": 720,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 5.4,
+            "priceUsd": 100,
+            "valueUsd": 540,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 3.8,
+            "priceUsd": 100,
+            "valueUsd": 380,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 3,
+            "priceUsd": 100,
+            "valueUsd": 300,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 1316,
+        "tokenValueUsd": 4420,
+        "portfolioValueUsd": 5736,
+        "pricedTokenCount": 6,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003",
+          "0xdemotoken000000000000000000000000000004",
+          "0xdemotoken000000000000000000000000000005"
+        ]
+      },
+      "traits": {
+        "wealthTier": 2,
+        "activityLevel": 3,
+        "diversityScore": 3,
+        "ageTier": "veteran",
+        "buildingCount": 19,
+        "buildingTypeWeights": {
+          "commercial": 0.18387970409159915,
+          "residential": 0.2661308846688659,
+          "civic": 0.29984212121629733,
+          "park": 0.25014729002323766
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 5736,
+        "skyMood": "day",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 5736,
+        "concentration": 0.2615062761506276,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 15,
+            "priceUsd": 100,
+            "valueUsd": 1500,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 9.8,
+            "priceUsd": 100,
+            "valueUsd": 980,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 7.2,
+            "priceUsd": 100,
+            "valueUsd": 720,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 5.4,
+            "priceUsd": 100,
+            "valueUsd": 540,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 3.8,
+            "priceUsd": 100,
+            "valueUsd": 380,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 3,
+            "priceUsd": 100,
+            "valueUsd": 300,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 1500,
+          "0xdemotoken000000000000000000000000000001": 980,
+          "0xdemotoken000000000000000000000000000002": 720,
+          "0xdemotoken000000000000000000000000000003": 540,
+          "0xdemotoken000000000000000000000000000004": 380,
+          "0xdemotoken000000000000000000000000000005": 300
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T16:00",
+        "localHour": 16,
+        "skyMood": "day",
+        "weatherCondition": "clear",
+        "temperatureF": 79
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": true
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "Towers go up",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 1.4,
+        "txCount": 2500,
+        "tokenCount": 6,
+        "nftCount": 4,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 32,
+            "priceUsd": 100,
+            "valueUsd": 3200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 21,
+            "priceUsd": 100,
+            "valueUsd": 2100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 18,
+            "priceUsd": 100,
+            "valueUsd": 1800,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 12,
+            "priceUsd": 100,
+            "valueUsd": 1200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 9,
+            "priceUsd": 100,
+            "valueUsd": 900,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 6.4,
+            "priceUsd": 100,
+            "valueUsd": 640,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 2632,
+        "tokenValueUsd": 9840,
+        "portfolioValueUsd": 12472,
+        "pricedTokenCount": 6,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003",
+          "0xdemotoken000000000000000000000000000004",
+          "0xdemotoken000000000000000000000000000005"
+        ]
+      },
+      "traits": {
+        "wealthTier": 3,
+        "activityLevel": 3,
+        "diversityScore": 3,
+        "ageTier": "veteran",
+        "buildingCount": 20,
+        "buildingTypeWeights": {
+          "commercial": 0.1784249220025517,
+          "residential": 0.2772037003171884,
+          "civic": 0.30164469431931484,
+          "park": 0.24272668336094505
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 12472,
+        "skyMood": "dusk",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 12472,
+        "concentration": 0.25657472738935216,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 32,
+            "priceUsd": 100,
+            "valueUsd": 3200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 21,
+            "priceUsd": 100,
+            "valueUsd": 2100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 18,
+            "priceUsd": 100,
+            "valueUsd": 1800,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 12,
+            "priceUsd": 100,
+            "valueUsd": 1200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 9,
+            "priceUsd": 100,
+            "valueUsd": 900,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 6.4,
+            "priceUsd": 100,
+            "valueUsd": 640,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 3200,
+          "0xdemotoken000000000000000000000000000001": 2100,
+          "0xdemotoken000000000000000000000000000002": 1800,
+          "0xdemotoken000000000000000000000000000003": 1200,
+          "0xdemotoken000000000000000000000000000004": 900,
+          "0xdemotoken000000000000000000000000000005": 640
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T18:00",
+        "localHour": 18,
+        "skyMood": "dusk",
+        "weatherCondition": "clear",
+        "temperatureF": 73
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": true
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "Collecting the block",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 2.2,
+        "txCount": 3000,
+        "tokenCount": 8,
+        "nftCount": 14,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 48,
+            "priceUsd": 100,
+            "valueUsd": 4800,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 31,
+            "priceUsd": 100,
+            "valueUsd": 3100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 26,
+            "priceUsd": 100,
+            "valueUsd": 2600,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 17,
+            "priceUsd": 100,
+            "valueUsd": 1700,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 12,
+            "priceUsd": 100,
+            "valueUsd": 1200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "SPCX",
+            "name": "SPCX",
+            "amount": 8,
+            "priceUsd": 100,
+            "valueUsd": 800,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000006",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 7,
+            "priceUsd": 100,
+            "valueUsd": 700,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000007",
+            "symbol": "INDEX",
+            "name": "INDEX",
+            "amount": 4,
+            "priceUsd": 100,
+            "valueUsd": 400,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 4136,
+        "tokenValueUsd": 15300,
+        "portfolioValueUsd": 19436,
+        "pricedTokenCount": 8,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003",
+          "0xdemotoken000000000000000000000000000004",
+          "0xdemotoken000000000000000000000000000005",
+          "0xdemotoken000000000000000000000000000006",
+          "0xdemotoken000000000000000000000000000007"
+        ]
+      },
+      "traits": {
+        "wealthTier": 3,
+        "activityLevel": 3,
+        "diversityScore": 4,
+        "ageTier": "veteran",
+        "buildingCount": 21,
+        "buildingTypeWeights": {
+          "commercial": 0.16738568101771772,
+          "residential": 0.24672190285296233,
+          "civic": 0.2634623345411761,
+          "park": 0.32243008158814385
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 19436,
+        "skyMood": "dusk",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 19436,
+        "concentration": 0.2469643959662482,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 48,
+            "priceUsd": 100,
+            "valueUsd": 4800,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 31,
+            "priceUsd": 100,
+            "valueUsd": 3100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 26,
+            "priceUsd": 100,
+            "valueUsd": 2600,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 17,
+            "priceUsd": 100,
+            "valueUsd": 1700,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 12,
+            "priceUsd": 100,
+            "valueUsd": 1200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "SPCX",
+            "name": "SPCX",
+            "amount": 8,
+            "priceUsd": 100,
+            "valueUsd": 800,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 4800,
+          "0xdemotoken000000000000000000000000000001": 3100,
+          "0xdemotoken000000000000000000000000000002": 2600,
+          "0xdemotoken000000000000000000000000000003": 1700,
+          "0xdemotoken000000000000000000000000000004": 1200,
+          "0xdemotoken000000000000000000000000000005": 800,
+          "0xdemotoken000000000000000000000000000006": 700,
+          "0xdemotoken000000000000000000000000000007": 400
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T19:00",
+        "localHour": 19,
+        "skyMood": "dusk",
+        "weatherCondition": "clear",
+        "temperatureF": 68
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": true
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "The skyline lands",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 6,
+        "txCount": 9000,
+        "tokenCount": 8,
+        "nftCount": 14,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 84,
+            "priceUsd": 100,
+            "valueUsd": 8400,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 41,
+            "priceUsd": 100,
+            "valueUsd": 4100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 36,
+            "priceUsd": 100,
+            "valueUsd": 3600,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 22,
+            "priceUsd": 100,
+            "valueUsd": 2200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 17,
+            "priceUsd": 100,
+            "valueUsd": 1700,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "SPCX",
+            "name": "SPCX",
+            "amount": 11,
+            "priceUsd": 100,
+            "valueUsd": 1100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000006",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 9,
+            "priceUsd": 100,
+            "valueUsd": 900,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000007",
+            "symbol": "INDEX",
+            "name": "INDEX",
+            "amount": 6,
+            "priceUsd": 100,
+            "valueUsd": 600,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 11280,
+        "tokenValueUsd": 22600,
+        "portfolioValueUsd": 33880,
+        "pricedTokenCount": 8,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003",
+          "0xdemotoken000000000000000000000000000004",
+          "0xdemotoken000000000000000000000000000005",
+          "0xdemotoken000000000000000000000000000006",
+          "0xdemotoken000000000000000000000000000007"
+        ]
+      },
+      "traits": {
+        "wealthTier": 3,
+        "activityLevel": 4,
+        "diversityScore": 4,
+        "ageTier": "veteran",
+        "buildingCount": 23,
+        "buildingTypeWeights": {
+          "commercial": 0.16059752724938217,
+          "residential": 0.24786950553859016,
+          "civic": 0.2821787052522403,
+          "park": 0.3093542619597873
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 33880,
+        "skyMood": "dusk",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 33880,
+        "concentration": 0.24793388429752067,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 84,
+            "priceUsd": 100,
+            "valueUsd": 8400,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 41,
+            "priceUsd": 100,
+            "valueUsd": 4100,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 36,
+            "priceUsd": 100,
+            "valueUsd": 3600,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 22,
+            "priceUsd": 100,
+            "valueUsd": 2200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 17,
+            "priceUsd": 100,
+            "valueUsd": 1700,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "SPCX",
+            "name": "SPCX",
+            "amount": 11,
+            "priceUsd": 100,
+            "valueUsd": 1100,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 8400,
+          "0xdemotoken000000000000000000000000000001": 4100,
+          "0xdemotoken000000000000000000000000000002": 3600,
+          "0xdemotoken000000000000000000000000000003": 2200,
+          "0xdemotoken000000000000000000000000000004": 1700,
+          "0xdemotoken000000000000000000000000000005": 1100,
+          "0xdemotoken000000000000000000000000000006": 900,
+          "0xdemotoken000000000000000000000000000007": 600
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T20:00",
+        "localHour": 20,
+        "skyMood": "dusk",
+        "weatherCondition": "clear",
+        "temperatureF": 63
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": true
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": false,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "Downtown",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 12,
+        "txCount": 20000,
+        "tokenCount": 8,
+        "nftCount": 16,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "INDEX",
+            "name": "INDEX",
+            "amount": 340,
+            "priceUsd": 100,
+            "valueUsd": 34000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 260,
+            "priceUsd": 100,
+            "valueUsd": 26000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 150,
+            "priceUsd": 100,
+            "valueUsd": 15000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 115,
+            "priceUsd": 100,
+            "valueUsd": 11500,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 72,
+            "priceUsd": 100,
+            "valueUsd": 7200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 54,
+            "priceUsd": 100,
+            "valueUsd": 5400,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000006",
+            "symbol": "SPCX",
+            "name": "SPCX",
+            "amount": 33,
+            "priceUsd": 100,
+            "valueUsd": 3300,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000007",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 26,
+            "priceUsd": 100,
+            "valueUsd": 2600,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 22560,
+        "tokenValueUsd": 105000,
+        "portfolioValueUsd": 127560,
+        "pricedTokenCount": 8,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003",
+          "0xdemotoken000000000000000000000000000004",
+          "0xdemotoken000000000000000000000000000005",
+          "0xdemotoken000000000000000000000000000006",
+          "0xdemotoken000000000000000000000000000007"
+        ]
+      },
+      "traits": {
+        "wealthTier": 4,
+        "activityLevel": 4,
+        "diversityScore": 4,
+        "ageTier": "veteran",
+        "buildingCount": 23,
+        "buildingTypeWeights": {
+          "commercial": 0.151436121823356,
+          "residential": 0.2588210257234669,
+          "civic": 0.28623205578838146,
+          "park": 0.30351079666479563
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 127560,
+        "skyMood": "night",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 127560,
+        "concentration": 0.266541235497021,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "INDEX",
+            "name": "INDEX",
+            "amount": 340,
+            "priceUsd": 100,
+            "valueUsd": 34000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 260,
+            "priceUsd": 100,
+            "valueUsd": 26000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 150,
+            "priceUsd": 100,
+            "valueUsd": 15000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 115,
+            "priceUsd": 100,
+            "valueUsd": 11500,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 72,
+            "priceUsd": 100,
+            "valueUsd": 7200,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 54,
+            "priceUsd": 100,
+            "valueUsd": 5400,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 34000,
+          "0xdemotoken000000000000000000000000000001": 26000,
+          "0xdemotoken000000000000000000000000000002": 15000,
+          "0xdemotoken000000000000000000000000000003": 11500,
+          "0xdemotoken000000000000000000000000000004": 7200,
+          "0xdemotoken000000000000000000000000000005": 5400,
+          "0xdemotoken000000000000000000000000000006": 3300,
+          "0xdemotoken000000000000000000000000000007": 2600
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T22:00",
+        "localHour": 22,
+        "skyMood": "night",
+        "weatherCondition": "clear",
+        "temperatureF": 58
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": true
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": false
+        }
+      ]
+    },
+    {
+      "label": "Gilded",
+      "stats": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "chain": "robinhood",
+        "nativeBalance": 25,
+        "txCount": 60000,
+        "tokenCount": 8,
+        "nftCount": 20,
+        "recentTxCount": 0,
+        "txTypeCounts": {},
+        "holdings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "INDEX",
+            "name": "INDEX",
+            "amount": 3400,
+            "priceUsd": 100,
+            "valueUsd": 340000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 2400,
+            "priceUsd": 100,
+            "valueUsd": 240000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 1500,
+            "priceUsd": 100,
+            "valueUsd": 150000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 1150,
+            "priceUsd": 100,
+            "valueUsd": 115000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 720,
+            "priceUsd": 100,
+            "valueUsd": 72000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 540,
+            "priceUsd": 100,
+            "valueUsd": 54000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000006",
+            "symbol": "SPCX",
+            "name": "SPCX",
+            "amount": 330,
+            "priceUsd": 100,
+            "valueUsd": 33000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000007",
+            "symbol": "TSLA",
+            "name": "TSLA",
+            "amount": 260,
+            "priceUsd": 100,
+            "valueUsd": 26000,
+            "iconUrl": null
+          }
+        ],
+        "nativePriceUsd": 1880,
+        "nativeValueUsd": 47000,
+        "tokenValueUsd": 1030000,
+        "portfolioValueUsd": 1077000,
+        "pricedTokenCount": 8,
+        "firstTxDate": "2021-11-09T14:20:00.000Z",
+        "heldTokenAddresses": [
+          "0xdemotoken000000000000000000000000000000",
+          "0xdemotoken000000000000000000000000000001",
+          "0xdemotoken000000000000000000000000000002",
+          "0xdemotoken000000000000000000000000000003",
+          "0xdemotoken000000000000000000000000000004",
+          "0xdemotoken000000000000000000000000000005",
+          "0xdemotoken000000000000000000000000000006",
+          "0xdemotoken000000000000000000000000000007"
+        ]
+      },
+      "traits": {
+        "wealthTier": 4,
+        "activityLevel": 4,
+        "diversityScore": 4,
+        "ageTier": "veteran",
+        "buildingCount": 24,
+        "buildingTypeWeights": {
+          "commercial": 0.13918401734427122,
+          "residential": 0.2749904860122239,
+          "civic": 0.28855475226513727,
+          "park": 0.29727074437836765
+        },
+        "keyCount": 0,
+        "keyMultiplier": 1,
+        "effectiveValueUsd": 1077000,
+        "skyMood": "night",
+        "weatherCondition": "clear",
+        "continent": "north-america",
+        "holdsRegen": false,
+        "hasLiberty": false,
+        "portfolioValueUsd": 1077000,
+        "concentration": 0.31569173630454966,
+        "topHoldings": [
+          {
+            "address": "0xdemotoken000000000000000000000000000000",
+            "symbol": "INDEX",
+            "name": "INDEX",
+            "amount": 3400,
+            "priceUsd": 100,
+            "valueUsd": 340000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000001",
+            "symbol": "NVDA",
+            "name": "NVDA",
+            "amount": 2400,
+            "priceUsd": 100,
+            "valueUsd": 240000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000002",
+            "symbol": "MSFT",
+            "name": "MSFT",
+            "amount": 1500,
+            "priceUsd": 100,
+            "valueUsd": 150000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000003",
+            "symbol": "AAPL",
+            "name": "AAPL",
+            "amount": 1150,
+            "priceUsd": 100,
+            "valueUsd": 115000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000004",
+            "symbol": "AMZN",
+            "name": "AMZN",
+            "amount": 720,
+            "priceUsd": 100,
+            "valueUsd": 72000,
+            "iconUrl": null
+          },
+          {
+            "address": "0xdemotoken000000000000000000000000000005",
+            "symbol": "GOOGL",
+            "name": "GOOGL",
+            "amount": 540,
+            "priceUsd": 100,
+            "valueUsd": 54000,
+            "iconUrl": null
+          }
+        ],
+        "holdingsByToken": {
+          "0xdemotoken000000000000000000000000000000": 340000,
+          "0xdemotoken000000000000000000000000000001": 240000,
+          "0xdemotoken000000000000000000000000000002": 150000,
+          "0xdemotoken000000000000000000000000000003": 115000,
+          "0xdemotoken000000000000000000000000000004": 72000,
+          "0xdemotoken000000000000000000000000000005": 54000,
+          "0xdemotoken000000000000000000000000000006": 33000,
+          "0xdemotoken000000000000000000000000000007": 26000
+        }
+      },
+      "location": {
+        "postalCode": "80201",
+        "city": "Denver",
+        "country": "US",
+        "countryName": "United States",
+        "region": "CO",
+        "continent": "north-america",
+        "timezone": "America/Denver",
+        "localTime": "2026-07-14T23:00",
+        "localHour": 23,
+        "skyMood": "night",
+        "weatherCondition": "clear",
+        "temperatureF": 55
+      },
+      "unlocks": [
+        {
+          "id": "bank",
+          "name": "Bank",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": false
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "description": "Build up a real transaction history",
+          "unlocked": true
+        },
+        {
+          "id": "aquarium",
+          "name": "Aquarium",
+          "description": "Collect NFTs",
+          "unlocked": true
+        },
+        {
+          "id": "hotel",
+          "name": "Hotel",
+          "description": "Grow your wallet into a higher wealth tier",
+          "unlocked": true
+        },
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "description": "Push your transaction history even further",
+          "unlocked": true
+        },
+        {
+          "id": "hospital",
+          "name": "Hospital",
+          "description": "Diversify across tokens, NFTs, and activity types",
+          "unlocked": true
+        },
+        {
+          "id": "dispensary",
+          "name": "Dispensary",
+          "description": "Build wealth while holding a diverse mix",
+          "unlocked": true
+        },
+        {
+          "id": "bar",
+          "name": "Bar",
+          "description": "Get your wallet moving with some activity",
+          "unlocked": true
+        },
+        {
+          "id": "pagoda-tower",
+          "name": "Pagoda Tower",
+          "description": "Travel to a country in Asia",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "gabled-townhouse",
+          "name": "Gabled Townhouse",
+          "description": "Travel to a country in Europe",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "pattern-hall",
+          "name": "Pattern Hall",
+          "description": "Travel to a country in Africa",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "terraced-tower",
+          "name": "Terraced Tower",
+          "description": "Travel to a country in South America",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "sail-house",
+          "name": "Sail House",
+          "description": "Travel to a country in Oceania",
+          "unlocked": false,
+          "group": "travel"
+        },
+        {
+          "id": "brownstone",
+          "name": "Brownstone",
+          "description": "Travel to a country in North America",
+          "unlocked": true,
+          "group": "travel"
+        },
+        {
+          "id": "robinhood-exchange",
+          "name": "Robinhood Exchange",
+          "description": "Trade on Robinhood Chain to raise the Exchange",
+          "unlocked": true
+        },
+        {
+          "id": "steakhouse",
+          "name": "DeStefano's Steak House",
+          "description": "Hold a Regenerates on Base in this same wallet",
+          "unlocked": false
+        },
+        {
+          "id": "liberty",
+          "name": "Liberty",
+          "description": "Given to people we met at NFT NYC",
+          "unlocked": false
+        },
+        {
+          "id": "tok-nvda",
+          "name": "Semiconductor Fab",
+          "description": "Hold $50+ of NVDA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-aapl",
+          "name": "Glass Campus",
+          "description": "Hold $50+ of AAPL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-tsla",
+          "name": "Gigafactory",
+          "description": "Hold $50+ of TSLA",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-msft",
+          "name": "Redmond Tower",
+          "description": "Hold $50+ of MSFT",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-spcx",
+          "name": "Launch Complex",
+          "description": "Hold $50+ of SPCX",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-googl",
+          "name": "Data Campus",
+          "description": "Hold $50+ of GOOGL",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-coin",
+          "name": "Exchange Floor",
+          "description": "Hold $50+ of COIN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-amzn",
+          "name": "Fulfilment Depot",
+          "description": "Hold $50+ of AMZN",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-meta",
+          "name": "Social Campus",
+          "description": "Hold $50+ of META",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "tok-pltr",
+          "name": "Ops Center",
+          "description": "Hold $50+ of PLTR",
+          "unlocked": false,
+          "group": "token"
+        },
+        {
+          "id": "vehicle-taxi",
+          "name": "Taxi",
+          "description": "Transact enough to bring cabs out",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-motorcycle",
+          "name": "Motorcycle",
+          "description": "Get your wallet moving",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-bus",
+          "name": "City Bus",
+          "description": "Grow the city past a dozen buildings",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-police",
+          "name": "Police Cruiser",
+          "description": "Build real wealth worth protecting",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-sports",
+          "name": "Sports Car",
+          "description": "Reach the top wealth tiers",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-limo",
+          "name": "Stretch Limo",
+          "description": "Portfolio past $100,000",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-truck",
+          "name": "Box Truck",
+          "description": "Trade a wide mix of tokens",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-ambulance",
+          "name": "Ambulance",
+          "description": "Diversify enough to raise a hospital",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "vehicle-tram",
+          "name": "Street Tram",
+          "description": "Run enough traffic to lay tram tracks",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-airplane",
+          "name": "Airplane",
+          "description": "Run a thousand transactions to open the flight path",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "aircraft-helicopter",
+          "name": "Helicopter",
+          "description": "Reach the top activity tier \u2014 the city gets its own chopper",
+          "unlocked": true,
+          "group": "vehicle"
+        },
+        {
+          "id": "traffic",
+          "name": "Street Traffic",
+          "description": "Transact enough to bring cars onto your streets",
+          "unlocked": true
+        },
+        {
+          "id": "streetlamps",
+          "name": "Streetlamps",
+          "description": "Grow past the base wealth tier to light up your sidewalks",
+          "unlocked": true
+        },
+        {
+          "id": "gilded-tower",
+          "name": "Gilded Tower",
+          "description": "Portfolio past $1,000,000 \u2014 the tallest tower on your block turns to gold",
+          "unlocked": true
+        }
+      ],
+      "report": {
+        "address": "0xfacadefacadefacadefacadefacadefacadefaca",
+        "steps": [
+          {
+            "id": "keys",
+            "label": "Key multiplier",
+            "result": "1x",
+            "headline": "One key (or none yet), so everything below is measured at full height.",
+            "inputs": [
+              {
+                "label": "Keys held",
+                "value": "0"
+              }
+            ],
+            "formula": "max(1, floor(keyCount))",
+            "working": "max(1, floor(0)) = 1",
+            "effect": "No boost applied."
+          },
+          {
+            "id": "wealth",
+            "label": "Wealth tier",
+            "result": "4 of 4 \u2014 Whale",
+            "headline": "Your portfolio is worth $1,077,000, which lands in tier 4.",
+            "inputs": [
+              {
+                "label": "Native balance",
+                "value": "$47,000"
+              },
+              {
+                "label": "Token holdings",
+                "value": "$1,030,000",
+                "note": "8 of 8 positions had a price"
+              },
+              {
+                "label": "Portfolio total",
+                "value": "$1,077,000"
+              },
+              {
+                "label": "Thresholds",
+                "value": "$100 \u00b7 $1,000 \u00b7 $10,000 \u00b7 $100,000"
+              }
+            ],
+            "formula": "tier = count of thresholds [100, 1k, 10k, 100k] that portfolio x keyMultiplier clears",
+            "working": "$1,077,000 x 1 = $1,077,000 -> clears 4 of 4",
+            "effect": "Top tier \u2014 the tallest towers and the richest materials are unlocked."
+          },
+          {
+            "id": "activity",
+            "label": "Activity level",
+            "result": "4 of 4 (exact 4.00)",
+            "headline": "60,000 lifetime transactions, log-scaled, gives activity 4.00.",
+            "inputs": [
+              {
+                "label": "Lifetime transactions",
+                "value": "60,000",
+                "note": "exact count from the explorer, not an estimate"
+              },
+              {
+                "label": "Recent transactions",
+                "value": "0"
+              },
+              {
+                "label": "After key multiplier",
+                "value": "60,000"
+              }
+            ],
+            "formula": "min(4, log10(txCount x keyMultiplier))",
+            "working": "min(4, log10(60,000 x 1)) = min(4, log10(60,000)) = 4.000",
+            "effect": "The single biggest driver of how many buildings you get: it contributes 16.0 of them. Log-scaled on purpose \u2014 transactions are nearly free on an L2, so spamming them barely moves the city."
+          },
+          {
+            "id": "diversity",
+            "label": "Diversity score",
+            "result": "4 of 4 (exact 3.91)",
+            "headline": "8 tokens, 20 NFTs and 0 distinct transaction types give diversity 3.91.",
+            "inputs": [
+              {
+                "label": "Distinct tokens",
+                "value": "8",
+                "note": "weighted 0.5 each"
+              },
+              {
+                "label": "NFTs held",
+                "value": "20",
+                "note": "weighted 0.5 each"
+              },
+              {
+                "label": "Distinct tx types",
+                "value": "0",
+                "note": "weighted 1.5 each \u2014 the hardest of the three to fake"
+              }
+            ],
+            "formula": "min(4, log2((tokens x 0.5 + nfts x 0.5 + txTypes x 1.5) x keyMultiplier + 1))",
+            "working": "(8x0.5 + 20x0.5 + 0x1.5) x 1 = 14.00 -> log2(15.00) = 3.907",
+            "effect": "Adds 4.7 buildings and widens the mix of what gets built."
+          },
+          {
+            "id": "buildings",
+            "label": "Building count",
+            "result": "24 buildings",
+            "headline": "3 to start, plus 16.0 earned by activity and 4.7 by diversity.",
+            "inputs": [
+              {
+                "label": "Base",
+                "value": "3",
+                "note": "every city gets three"
+              },
+              {
+                "label": "From activity",
+                "value": "+16.00",
+                "note": "4.00 x 4"
+              },
+              {
+                "label": "From diversity",
+                "value": "+4.69",
+                "note": "3.91 x 1.2"
+              }
+            ],
+            "formula": "max(3, round(3 + activityExact x 4 + diversityExact x 1.2))",
+            "working": "max(3, round(3 + 16.00 + 4.69)) = max(3, round(23.69)) = 24",
+            "effect": "Built from the EXACT activity and diversity values, not the rounded tiers \u2014 that is why your city changes when you trade, instead of only when you cross a tier boundary an order of magnitude away. Range is 3 to 24."
+          },
+          {
+            "id": "concentration",
+            "label": "Concentration",
+            "result": "31.6%",
+            "headline": "31.6% of your portfolio is in INDEX, so it gets the dominant tower.",
+            "inputs": [
+              {
+                "label": "Largest position",
+                "value": "INDEX \u2014 $340,000"
+              },
+              {
+                "label": "Portfolio total",
+                "value": "$1,077,000"
+              }
+            ],
+            "formula": "min(1, largestPositionUsd / portfolioUsd)",
+            "working": "$340,000 / $1,077,000 = 0.316",
+            "effect": "A spread portfolio earns an even skyline rather than one landmark."
+          },
+          {
+            "id": "age",
+            "label": "Age",
+            "result": "4 years, 9 months old",
+            "headline": "This city was founded on November 9, 2021 \u2014 the day this wallet made its first transaction. It has existed ever since.",
+            "inputs": [
+              {
+                "label": "First transaction",
+                "value": "November 9, 2021",
+                "note": "the day the city was founded"
+              },
+              {
+                "label": "Age",
+                "value": "4 years, 9 months"
+              },
+              {
+                "label": "Tier",
+                "value": "Veteran",
+                "note": "new < 30d \u00b7 young < 1y \u00b7 established < 3y \u00b7 veteran 3y+"
+              }
+            ],
+            "formula": "age = now - firstTransactionDate",
+            "working": "November 9, 2021 -> 4 years, 9 months",
+            "effect": "Your key did not build this city. It has been here since your first transaction, drawing itself from everything the wallet did afterwards \u2014 the key only unlocks the ability to look at it."
+          },
+          {
+            "id": "place",
+            "label": "Sky, weather and architecture",
+            "result": "night \u00b7 clear \u00b7 north-america",
+            "headline": "These are the only parts of your city that are not on-chain.",
+            "inputs": [
+              {
+                "label": "Assigned location",
+                "value": "north-america"
+              },
+              {
+                "label": "Local sky",
+                "value": "night",
+                "note": "real local time where your city sits"
+              },
+              {
+                "label": "Local weather",
+                "value": "clear",
+                "note": "real current conditions"
+              }
+            ],
+            "formula": "sky and weather = live conditions at the city\u2019s assigned location",
+            "working": "north-america -> night, clear",
+            "effect": "Sets the palette, the light and the architectural style. It moves with the real world, so your city is a different picture at 3am than at noon."
+          },
+          {
+            "id": "seed",
+            "label": "Placement",
+            "result": "seeded by wallet address",
+            "headline": "Your wallet decides WHAT gets built. The seed decides WHERE each piece lands.",
+            "inputs": [
+              {
+                "label": "Seed",
+                "value": "0xfacadefacadefacadefacadefacadefacadefaca"
+              }
+            ],
+            "formula": "deterministic RNG seeded on the wallet address",
+            "working": "same wallet -> same layout, every time",
+            "effect": "No transaction maps to a specific pixel, and this report will never claim one does. Counts, heights, materials and mix are all earned above; the arrangement is seeded, so your city is stable rather than reshuffling on every view."
+          },
+          {
+            "id": "mix",
+            "label": "Building mix",
+            "result": "7 residential, 3 commercial, 7 civic, 7 parks",
+            "headline": "Four independent signals decide what kind of city you get, not just how big.",
+            "inputs": [
+              {
+                "label": "Residential",
+                "value": "8.24 raw -> 27.5%",
+                "note": "Portfolio value: $1,077,000 \u00b7 log10(portfolio + 1) x 1.2 + 1"
+              },
+              {
+                "label": "Commercial",
+                "value": "4.17 raw -> 13.9%",
+                "note": "Distinct tokens held: 8 \u00b7 log2(tokens + 1) + 1"
+              },
+              {
+                "label": "Civic",
+                "value": "8.65 raw -> 28.9%",
+                "note": "Lifetime transactions: 60,000 \u00b7 log10(max(txCount, 1)) x 1.6 + 1"
+              },
+              {
+                "label": "Parks",
+                "value": "8.91 raw -> 29.7%",
+                "note": "NFTs held: 20 \u00b7 log2(nfts + 1) x 1.8 + 1"
+              }
+            ],
+            "formula": "each weight / sum of all four weights",
+            "working": "8.24 + 4.17 + 8.65 + 8.91 = 29.96",
+            "effect": "Deliberately NOT key-boosted. Keys build the city you already have, faster \u2014 they must not quietly turn it into somebody else\u2019s city. All four are log-scaled so one big number cannot flatten the other three."
+          }
+        ],
+        "buildings": [
+          {
+            "type": "residential",
+            "label": "Residential",
+            "share": 0.2749904860122239,
+            "count": 7,
+            "weight": 8.238659327850925,
+            "driver": "Portfolio value",
+            "driverValue": "$1,077,000"
+          },
+          {
+            "type": "commercial",
+            "label": "Commercial",
+            "share": 0.13918401734427122,
+            "count": 3,
+            "weight": 4.169925001442312,
+            "driver": "Distinct tokens held",
+            "driverValue": "8"
+          },
+          {
+            "type": "civic",
+            "label": "Civic",
+            "share": 0.28855475226513727,
+            "count": 7,
+            "weight": 8.64504200061383,
+            "driver": "Lifetime transactions",
+            "driverValue": "60,000"
+          },
+          {
+            "type": "park",
+            "label": "Parks",
+            "share": 0.29727074437836765,
+            "count": 7,
+            "weight": 8.90617136100177,
+            "driver": "NFTs held",
+            "driverValue": "20"
+          }
+        ],
+        "buildingCount": 24,
+        "caveats": [],
+        "passport": {
+          "countryCode": "US",
+          "countryName": "United States",
+          "city": "Denver",
+          "region": "CO",
+          "continent": "north-america",
+          "foundedIso": "2021-11-09T14:20:00.000Z",
+          "foundedLabel": "November 9, 2021",
+          "ageLabel": "4 years, 9 months",
+          "ageTier": "veteran",
+          "ageTierLabel": "Veteran",
+          "flagSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"54\" height=\"36\" viewBox=\"0 0 54 36\" shape-rendering=\"crispEdges\" role=\"img\" aria-label=\"US flag\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"3\" fill=\"#17306e\"/><rect x=\"24\" y=\"0\" width=\"30\" height=\"3\" fill=\"#d3222a\"/><rect x=\"0\" y=\"3\" width=\"3\" height=\"3\" fill=\"#17306e\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"6\" y=\"3\" width=\"3\" height=\"3\" fill=\"#17306e\"/><rect x=\"9\" y=\"3\" width=\"3\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"12\" y=\"3\" width=\"3\" height=\"3\" fill=\"#17306e\"/><rect x=\"15\" y=\"3\" width=\"3\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"18\" y=\"3\" width=\"6\" height=\"3\" fill=\"#17306e\"/><rect x=\"24\" y=\"3\" width=\"30\" height=\"3\" fill=\"#d3222a\"/><rect x=\"0\" y=\"6\" width=\"24\" height=\"3\" fill=\"#17306e\"/><rect x=\"24\" y=\"6\" width=\"30\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"0\" y=\"9\" width=\"3\" height=\"3\" fill=\"#17306e\"/><rect x=\"3\" y=\"9\" width=\"3\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"6\" y=\"9\" width=\"3\" height=\"3\" fill=\"#17306e\"/><rect x=\"9\" y=\"9\" width=\"3\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"12\" y=\"9\" width=\"3\" height=\"3\" fill=\"#17306e\"/><rect x=\"15\" y=\"9\" width=\"3\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"18\" y=\"9\" width=\"6\" height=\"3\" fill=\"#17306e\"/><rect x=\"24\" y=\"9\" width=\"30\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"0\" y=\"12\" width=\"24\" height=\"3\" fill=\"#17306e\"/><rect x=\"24\" y=\"12\" width=\"30\" height=\"3\" fill=\"#d3222a\"/><rect x=\"0\" y=\"15\" width=\"24\" height=\"3\" fill=\"#17306e\"/><rect x=\"24\" y=\"15\" width=\"30\" height=\"3\" fill=\"#d3222a\"/><rect x=\"0\" y=\"18\" width=\"54\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"0\" y=\"21\" width=\"54\" height=\"3\" fill=\"#d3222a\"/><rect x=\"0\" y=\"24\" width=\"54\" height=\"3\" fill=\"#d3222a\"/><rect x=\"0\" y=\"27\" width=\"54\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"0\" y=\"30\" width=\"54\" height=\"3\" fill=\"#f4f3ee\"/><rect x=\"0\" y=\"33\" width=\"54\" height=\"3\" fill=\"#d3222a\"/></svg>"
+        }
+      }
+    }
+  ],
+  "demoAddress": "0xfacadefacadefacadefacadefacadefacadefaca",
+  "demoNotice": "A real city \u2014 same engine, same numbers a live wallet gets, nothing mocked up. The address is a stand-in until you can look up your own after the mint."
+}

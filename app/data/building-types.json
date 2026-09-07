@@ -1,0 +1,174 @@
+{
+  "buildings": [
+    {
+      "id": "commercial",
+      "name": "Commercial"
+    },
+    {
+      "id": "residential",
+      "name": "Residential"
+    },
+    {
+      "id": "civic",
+      "name": "Civic"
+    },
+    {
+      "id": "bank",
+      "name": "Bank"
+    },
+    {
+      "id": "library",
+      "name": "Library"
+    },
+    {
+      "id": "aquarium",
+      "name": "Aquarium"
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel"
+    },
+    {
+      "id": "stadium",
+      "name": "Stadium"
+    },
+    {
+      "id": "hospital",
+      "name": "Hospital"
+    },
+    {
+      "id": "dispensary",
+      "name": "Dispensary"
+    },
+    {
+      "id": "bar",
+      "name": "Bar"
+    },
+    {
+      "id": "pagoda-tower",
+      "name": "Pagoda Tower"
+    },
+    {
+      "id": "gabled-townhouse",
+      "name": "Gabled Townhouse"
+    },
+    {
+      "id": "pattern-hall",
+      "name": "Pattern Hall"
+    },
+    {
+      "id": "terraced-tower",
+      "name": "Terraced Tower"
+    },
+    {
+      "id": "sail-house",
+      "name": "Sail House"
+    },
+    {
+      "id": "brownstone",
+      "name": "Brownstone"
+    },
+    {
+      "id": "robinhood-exchange",
+      "name": "Robinhood Exchange"
+    },
+    {
+      "id": "steakhouse",
+      "name": "DeStefano's Steak House"
+    },
+    {
+      "id": "liberty",
+      "name": "Liberty"
+    },
+    {
+      "id": "tok-nvda",
+      "name": "Semiconductor Fab"
+    },
+    {
+      "id": "tok-aapl",
+      "name": "Glass Campus"
+    },
+    {
+      "id": "tok-tsla",
+      "name": "Gigafactory"
+    },
+    {
+      "id": "tok-msft",
+      "name": "Redmond Tower"
+    },
+    {
+      "id": "tok-spcx",
+      "name": "Launch Complex"
+    },
+    {
+      "id": "tok-googl",
+      "name": "Data Campus"
+    },
+    {
+      "id": "tok-coin",
+      "name": "Exchange Floor"
+    },
+    {
+      "id": "tok-amzn",
+      "name": "Fulfilment Depot"
+    },
+    {
+      "id": "tok-meta",
+      "name": "Social Campus"
+    },
+    {
+      "id": "tok-pltr",
+      "name": "Ops Center"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "tram",
+      "name": "Street Tram"
+    },
+    {
+      "id": "truck",
+      "name": "Box Truck"
+    },
+    {
+      "id": "ambulance",
+      "name": "Ambulance"
+    },
+    {
+      "id": "sedan",
+      "name": "Sedan"
+    },
+    {
+      "id": "sports",
+      "name": "Sports Car"
+    },
+    {
+      "id": "van",
+      "name": "Delivery Van"
+    },
+    {
+      "id": "taxi",
+      "name": "Taxi"
+    },
+    {
+      "id": "pickup",
+      "name": "Pickup Truck"
+    },
+    {
+      "id": "bus",
+      "name": "Bus"
+    },
+    {
+      "id": "motorcycle",
+      "name": "Motorcycle"
+    },
+    {
+      "id": "police",
+      "name": "Police Car"
+    },
+    {
+      "id": "limo",
+      "name": "Stretch Limo"
+    }
+  ]
+}

@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City Simulator</title>
+<style>
+  :root{
+    --bg:#060806; --panel:#0C0F0A; --panel-alt:#0A0D08; --panel-raised:#10140C;
+    --border:#1F2A16; --border-strong:#7D9B14;
+    --accent:#CCFF00; --accent-ink:#0B1400;
+    --text:#D7E2CC; --text-muted:#93A187; --text-faint:#5F6B57;
+    --danger:#FF5C4D;
+    --font-mono:ui-monospace,'SF Mono',Menlo,'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-mono);}
+  ::selection{background:var(--accent);color:var(--accent-ink);}
+  a{color:inherit;}
+  button, select, input, textarea{font-family:inherit;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important;} }
+
+  .bp-grid{
+    position:fixed;inset:0;z-index:-1;
+    background-image:linear-gradient(rgba(125,155,20,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(125,155,20,.10) 1px, transparent 1px);
+    background-size:28px 28px;background-color:var(--bg);
+  }
+
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    padding:.8rem 1.2rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;background:var(--bg);
+  }
+  .topbar-id{display:flex;align-items:baseline;gap:.5rem;}
+  .kicker{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);}
+  h1{font-size:1.1rem;margin:0;font-weight:700;letter-spacing:.02em;}
+  .nav-links{display:flex;gap:.5rem;flex-wrap:wrap;}
+  .nav-link{display:inline-flex;align-items:center;gap:.35rem;background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:.4rem .75rem;font-size:.7rem;text-decoration:none;border-radius:3px;}
+  .nav-link:hover{border-color:var(--accent);color:var(--accent);}
+
+  main{max-width:1240px;margin:0 auto;padding:1.4rem 1.2rem 4rem;}
+
+  .hero{padding:1.2rem 0 1.6rem;text-align:center;}
+  .hero h2{font-size:clamp(1.4rem,3.6vw,2rem);margin:.3rem 0 .6rem;letter-spacing:.02em;}
+  .hero p{color:var(--text-muted);font-size:.86rem;max-width:60ch;margin:0 auto;line-height:1.6;}
+  .disclaimer{
+    max-width:70ch;margin:.9rem auto 0;font-size:.7rem;color:var(--text-faint);line-height:1.6;
+    border:1px dashed var(--border);border-radius:5px;padding:.7rem .9rem;
+  }
+  .disclaimer b{color:var(--text-muted);}
+
+  .input-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.3rem;}
+  #addrIn{
+    flex:1;min-width:260px;max-width:480px;background:var(--panel-alt);border:1px solid var(--border);color:var(--text);
+    padding:.7rem .8rem;font-size:.85rem;border-radius:3px;
+  }
+  #addrIn:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .btn{
+    background:var(--accent);color:var(--accent-ink);border:none;padding:.7rem 1.1rem;font-weight:700;font-size:.76rem;
+    letter-spacing:.03em;text-transform:uppercase;cursor:pointer;border-radius:3px;
+  }
+  .btn:hover{background:#DFFF66;}
+  .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-muted);text-transform:none;font-weight:400;letter-spacing:0;}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .try-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:.7rem;align-items:center;}
+  .try-label{font-size:.68rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem;align-items:start;}
+  .layout[hidden]{display:none;}
+  @media (max-width:920px){ .layout{grid-template-columns:1fr;} }
+
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:5px;margin-bottom:1rem;}
+  .panel-head{padding:.8rem 1rem .1rem;}
+  .panel-head h3{font-size:.86rem;margin:0 0 .2rem;color:var(--text);}
+  .panel-head p{font-size:.72rem;color:var(--text-muted);margin:0 0 .7rem;line-height:1.5;}
+  .panel-body{padding:0 1rem 1rem;}
+
+  .city-frame{position:relative;border-radius:5px;overflow:hidden;background:#000;}
+  .city-frame svg{display:block;width:100%;height:auto;}
+  .city-meta{display:flex;gap:1rem;flex-wrap:wrap;padding:.6rem 1rem;font-size:.7rem;color:var(--text-muted);border-top:1px solid var(--border);}
+  .city-meta b{color:var(--accent);}
+  .city-actions{display:flex;gap:.5rem;padding:.7rem 1rem 0;flex-wrap:wrap;}
+  .empty-state{padding:3rem 1rem;text-align:center;color:var(--text-faint);font-size:.8rem;line-height:1.7;}
+  .empty-state .big{font-size:2.2rem;display:block;margin-bottom:.6rem;}
+
+  .trait-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .9rem;font-size:.74rem;}
+  .trait-grid .k{color:var(--text-muted);}
+  .trait-grid .v{color:var(--accent);font-weight:600;text-align:right;font-variant-numeric:tabular-nums;}
+  .trait-row{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid var(--border);}
+  .trait-row:last-child{border-bottom:none;}
+
+  .weight-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:.5rem 0 .3rem;border:1px solid var(--border);}
+  .weight-legend{display:flex;gap:.8rem;flex-wrap:wrap;font-size:.64rem;color:var(--text-muted);}
+  .weight-legend span{display:inline-flex;align-items:center;gap:.3rem;}
+  .weight-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;}
+
+  .holding-row{display:flex;align-items:center;gap:.6rem;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.76rem;}
+  .holding-row:last-child{border-bottom:none;}
+  .holding-sym{font-weight:700;color:var(--text);width:56px;flex-shrink:0;}
+  .holding-bar-wrap{flex:1;height:7px;background:var(--panel-alt);border-radius:4px;overflow:hidden;}
+  .holding-bar{height:100%;background:var(--accent);}
+  .holding-val{width:76px;text-align:right;color:var(--text-muted);flex-shrink:0;font-variant-numeric:tabular-nums;}
+
+  .stat-line{display:flex;justify-content:space-between;font-size:.74rem;padding:.28rem 0;border-bottom:1px solid var(--border);}
+  .stat-line:last-child{border-bottom:none;}
+  .stat-line b{color:var(--text);font-variant-numeric:tabular-nums;}
+  pre.raw{background:var(--panel-alt);border:1px solid var(--border);border-radius:4px;padding:.7rem;font-size:.68rem;line-height:1.5;overflow-x:auto;color:var(--text-muted);margin:.6rem 0 0;display:none;}
+  pre.raw.is-on{display:block;}
+
+  .passport-card{display:flex;align-items:center;gap:.8rem;}
+  .passport-flag{font-size:2.2rem;line-height:1;}
+  .passport-info b{color:var(--accent);}
+  .passport-info .country{font-size:.95rem;color:var(--text);font-weight:700;}
+  .passport-info .continent{font-size:.7rem;color:var(--text-faint);text-transform:capitalize;}
+
+  .memory-row{display:flex;justify-content:space-between;font-size:.74rem;padding:.3rem 0;border-bottom:1px solid var(--border);}
+  .memory-row:last-child{border-bottom:none;}
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:.5rem;}
+  .gallery-item{background:var(--panel-alt);border:1px solid var(--border);border-radius:4px;padding:.5rem .4rem;text-align:center;}
+  .gallery-item .swatch{width:100%;height:34px;border-radius:3px;margin-bottom:.35rem;}
+  .gallery-item .label{font-size:.6rem;color:var(--text-muted);line-height:1.3;}
+  .gallery-sub{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin:.9rem 0 .5rem;}
+  .gallery-sub:first-child{margin-top:0;}
+
+  input[type=text].billboard-in{
+    width:100%;background:var(--panel-alt);border:1px solid var(--border);color:var(--text);padding:.55rem .7rem;
+    font-size:.8rem;border-radius:3px;margin-bottom:.5rem;
+  }
+
+  footer{max-width:1240px;margin:0 auto;padding:1rem 1.2rem 2.5rem;color:var(--text-faint);font-size:.66rem;line-height:1.7;text-align:center;}
+  footer a{color:var(--text-muted);}
+</style>
+</head>
+<body>
+<div class="bp-grid"></div>
+
+<header class="topbar">
+  <div class="topbar-id">
+    <span class="kicker">City of Stonks</span>
+    <h1>City Simulator</h1>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../">&larr; Control Room</a>
+    <a class="nav-link" href="https://city-of-stonks.github.io/building-designer/" target="_blank" rel="noopener">Building Designer &#8599;</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <span class="kicker">City of Stonks</span>
+    <h2>Enter an address, watch a city rise.</h2>
+    <p>A city rises out of how its stonks actually trade — the more it holds and moves, the bigger it gets and the more it unlocks.</p>
+    <div class="disclaimer">
+      <b>This is an independent fan-made replica</b> of <a href="https://cityofstonks.com/app" target="_blank" rel="noopener">cityofstonks.com/app</a>, not officially affiliated and not the real generator. Nothing here is sent anywhere — an address is hashed <i>in your browser</i> into deterministic demo traits, and every building is drawn by this page's own procedural renderer, not the real site's artwork. The trait thresholds were reverse-engineered from the real site's own public demo data (see <code>app/data/</code> in this repo) and are close, not exact.
+    </div>
+
+    <div class="input-row">
+      <input type="text" id="addrIn" placeholder="0x... a Robinhood Chain address (or anything — it's just hashed)" spellcheck="false">
+      <button class="btn" id="generateBtn">Generate</button>
+    </div>
+    <div class="try-row">
+      <span class="try-label">Try:</span>
+      <button class="btn ghost" data-example="trader">Stock-token trader (50 tokens)</button>
+      <button class="btn ghost" data-example="empty">Unused (empty)</button>
+      <button class="btn ghost" data-example="random">&#127922; Random wallet</button>
+    </div>
+  </section>
+
+  <div class="layout" id="layout" hidden>
+
+    <div class="col-main">
+      <div class="panel">
+        <div class="city-frame" id="cityFrame"></div>
+        <div class="city-meta" id="cityMeta"></div>
+        <div class="city-actions">
+          <button class="btn ghost" id="exportPngBtn">&darr; Export PNG</button>
+          <button class="btn ghost" id="exportSvgBtn">&darr; Export SVG</button>
+        </div>
+        <div style="height:.8rem;"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Billboard</h3><p>Put a message up on a rooftop in your city.</p></div>
+        <div class="panel-body">
+          <input type="text" class="billboard-in" id="billboardIn" maxlength="16" placeholder="e.g. GM CITY (16 chars)">
+          <button class="btn ghost" id="billboardBtn">Put it up</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Building &amp; vehicle types</h3><p>Every skyline type, unlockable special building, and vehicle a city can generate — real names from the site, drawn here with this replica's own art.</p></div>
+        <div class="panel-body">
+          <div class="gallery-sub">Base skyline types</div>
+          <div class="gallery-grid" id="galleryBase"></div>
+          <div class="gallery-sub">Unlockable specials</div>
+          <div class="gallery-grid" id="gallerySpecial"></div>
+          <div class="gallery-sub">Vehicles</div>
+          <div class="gallery-grid" id="galleryVehicles"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-side">
+      <div class="panel">
+        <div class="panel-head"><h3>Why your city looks like this</h3><p>Every number below came from the address above. Nothing here is decorative — this is the working.</p></div>
+        <div class="panel-body">
+          <div class="trait-grid" id="traitGrid"></div>
+          <div class="weight-bar" id="weightBar"></div>
+          <div class="weight-legend" id="weightLegend"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Top holdings</h3><p>The positions this city is actually built from.</p></div>
+        <div class="panel-body" id="holdingsBody"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>On-chain stats</h3><p>Raw mock values in the shape of the real explorer output.</p></div>
+        <div class="panel-body">
+          <div id="statsBody"></div>
+          <button class="btn ghost" id="rawToggleBtn" style="margin-top:.6rem;">Show raw data</button>
+          <pre class="raw" id="rawData"></pre>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Passport</h3><p>Where this city says it's from.</p></div>
+        <div class="panel-body">
+          <div class="passport-card">
+            <span class="passport-flag" id="passportFlag">&#127758;</span>
+            <div class="passport-info">
+              <div class="country" id="passportCountry">&mdash;</div>
+              <div class="continent" id="passportContinent">&mdash;</div>
+            </div>
+          </div>
+          <div class="trait-row"><span class="k">Local time</span><span class="v" id="passportTime">&mdash;</span></div>
+          <div class="trait-row"><span class="k">Sky</span><span class="v" id="passportSky">&mdash;</span></div>
+          <div class="trait-row"><span class="k">Weather</span><span class="v" id="passportWeather">&mdash;</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>City memory</h3><p>How this city has changed across visits — tracked locally in your browser, nowhere else.</p></div>
+        <div class="panel-body" id="memoryBody"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="empty-state" id="emptyState">
+    <span class="big">&#127961;&#65039;</span>
+    No city generated yet.<br>
+    Enter an address above, or try one of the example wallets, to grow its block of the city.
+  </div>
+
+</main>
+
+<footer>
+  Runs entirely in your browser — no address is ever sent anywhere. Independent fan-made replica, not officially affiliated with cityofstonks.com.<br>
+  Reference data pulled from the real site's own public <code>/app</code> API responses lives in <a href="https://github.com/City-of-Stonks/testing/tree/main/app/data" target="_blank" rel="noopener">app/data</a> of this repo.
+</footer>
+
+<script>
+/* =========================================================================
+   Reference data — the real site's own category names/labels (from its
+   public showcase API, art stripped) and the real country/continent list
+   (from its public config API). Facts and structure, not their artwork.
+   ========================================================================= */
+const BASE_CATEGORIES = ['commercial', 'residential', 'civic', 'park'];
+const BASE_CATEGORY_LABEL = { commercial: 'Commercial', residential: 'Residential', civic: 'Civic', park: 'Park' };
+const BASE_CATEGORY_COLOR = { commercial: '#7FCBFF', residential: '#F2C94C', civic: '#B9A6E0', park: '#8FD97A' };
+
+const SPECIAL_BUILDINGS = [
+  { id: 'bank', name: 'Bank', unlock: 'nativeBalance >= 5' },
+  { id: 'library', name: 'Library', unlock: 'txCount >= 5000' },
+  { id: 'hospital', name: 'Hospital', unlock: 'nftCount >= 5' },
+  { id: 'stadium', name: 'Stadium', unlock: 'activityLevel 4' },
+  { id: 'dispensary', name: 'Dispensary', unlock: 'holdsRegen' },
+  { id: 'liberty', name: 'Liberty', unlock: 'max wealth + diversity' },
+];
+const TOKEN_BUILDINGS = [
+  { sym: 'NVDA', name: 'Semiconductor Fab' },
+  { sym: 'AAPL', name: 'Glass Campus' },
+  { sym: 'TSLA', name: 'Gigafactory' },
+  { sym: 'MSFT', name: 'Redmond Tower' },
+  { sym: 'SPCX', name: 'Launch Complex' },
+  { sym: 'GOOGL', name: 'Data Campus' },
+  { sym: 'COIN', name: 'Exchange Floor' },
+  { sym: 'AMZN', name: 'Fulfilment Depot' },
+  { sym: 'META', name: 'Social Campus' },
+  { sym: 'PLTR', name: 'Ops Center' },
+];
+const VEHICLES = ['Street Tram', 'Box Truck', 'Ambulance', 'Sedan', 'Sports Car', 'Delivery Van', 'Taxi', 'Pickup Truck', 'Bus', 'Motorcycle', 'Police Car', 'Stretch Limo'];
+
+// Trimmed from the real config API's country list (facts, not art).
+const COUNTRIES = [
+  { code: 'US', name: 'United States', continent: 'north-america' },
+  { code: 'CA', name: 'Canada', continent: 'north-america' },
+  { code: 'MX', name: 'Mexico', continent: 'north-america' },
+  { code: 'BR', name: 'Brazil', continent: 'south-america' },
+  { code: 'AR', name: 'Argentina', continent: 'south-america' },
+  { code: 'CL', name: 'Chile', continent: 'south-america' },
+  { code: 'CO', name: 'Colombia', continent: 'south-america' },
+  { code: 'GB', name: 'United Kingdom', continent: 'europe' },
+  { code: 'DE', name: 'Germany', continent: 'europe' },
+  { code: 'FR', name: 'France', continent: 'europe' },
+  { code: 'ES', name: 'Spain', continent: 'europe' },
+  { code: 'IT', name: 'Italy', continent: 'europe' },
+  { code: 'NL', name: 'Netherlands', continent: 'europe' },
+  { code: 'SE', name: 'Sweden', continent: 'europe' },
+  { code: 'PL', name: 'Poland', continent: 'europe' },
+  { code: 'PT', name: 'Portugal', continent: 'europe' },
+  { code: 'JP', name: 'Japan', continent: 'asia' },
+  { code: 'CN', name: 'China', continent: 'asia' },
+  { code: 'IN', name: 'India', continent: 'asia' },
+  { code: 'KR', name: 'South Korea', continent: 'asia' },
+  { code: 'SG', name: 'Singapore', continent: 'asia' },
+  { code: 'AE', name: 'United Arab Emirates', continent: 'asia' },
+  { code: 'VN', name: 'Vietnam', continent: 'asia' },
+  { code: 'ID', name: 'Indonesia', continent: 'asia' },
+  { code: 'EG', name: 'Egypt', continent: 'africa' },
+  { code: 'NG', name: 'Nigeria', continent: 'africa' },
+  { code: 'ZA', name: 'South Africa', continent: 'africa' },
+  { code: 'KE', name: 'Kenya', continent: 'africa' },
+  { code: 'GH', name: 'Ghana', continent: 'africa' },
+  { code: 'AU', name: 'Australia', continent: 'oceania' },
+  { code: 'NZ', name: 'New Zealand', continent: 'oceania' },
+  { code: 'FJ', name: 'Fiji', continent: 'oceania' },
+];
+
+/* =========================================================================
+   Deterministic PRNG — an address (or anything typed in) is hashed into a
+   32-bit seed, then run through mulberry32. Same input always produces the
+   same city, with no network call and nothing ever leaving the browser.
+   ========================================================================= */
+function hashSeed(str) {
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return h >>> 0;
+}
+function mulberry32(seed) {
+  let a = seed;
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function pick(rand, arr) { return arr[Math.floor(rand() * arr.length)]; }
+function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+
+/* =========================================================================
+   Mock stats generation — deterministic per address. The three "Try"
+   buttons are fixed profiles rather than hashed, so they always show the
+   same example city like the real site's canned demo wallets do.
+   ========================================================================= */
+function mockStatsFromAddress(addr) {
+  const rand = mulberry32(hashSeed(addr.toLowerCase()));
+  const richness = Math.pow(rand(), 2.3); // biased toward small wallets, like real distributions
+  return buildStats(rand, richness, Math.max(1, Math.round(richness * 8)));
+}
+function buildStats(rand, richness, tokenCountOverride) {
+  const nativeBalance = +(richness * 24 + rand() * 0.5).toFixed(3);
+  const nativePriceUsd = 1880;
+  const txCount = Math.max(1, Math.round(1 + richness * 59999 * (0.6 + rand() * 0.8)));
+  const tokenCount = tokenCountOverride != null ? tokenCountOverride : Math.min(8, Math.round(richness * 9));
+  const nftCount = Math.round(richness * 20 * rand());
+  const daysAgo = Math.round(30 + rand() * 1700);
+  const firstTxDate = new Date(Date.now() - daysAgo * 86400000).toISOString();
+
+  // Real symbols (seeded-shuffled for variety) fill the front of the list
+  // so they land in the bigger value shares below; filler tickers pad out
+  // the rest for high token counts, numbered sequentially (not derived
+  // from the shrinking/growing array length, which was producing "TICK1"
+  // for every filler).
+  const realShuffled = TOKEN_BUILDINGS.slice();
+  for (let i = realShuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [realShuffled[i], realShuffled[j]] = [realShuffled[j], realShuffled[i]];
+  }
+  const chosenReal = realShuffled.slice(0, Math.min(tokenCount, realShuffled.length));
+  const fillerCount = Math.max(0, tokenCount - chosenReal.length);
+  const fillers = Array.from({ length: fillerCount }, (_, i) => ({ sym: 'TICK' + (i + 1), name: null }));
+  const chosen = chosenReal.concat(fillers);
+  const tokenValueUsdTotal = richness * 1150000 * (0.5 + rand());
+  let remaining = tokenValueUsdTotal;
+  const holdings = chosen.map((c, i) => {
+    const share = remaining * (0.55 - i * 0.02) * (0.7 + rand() * 0.6);
+    const valueUsd = Math.max(0, i === chosen.length - 1 ? remaining : Math.min(share, remaining));
+    remaining -= valueUsd;
+    return { symbol: c.sym, name: c.sym, valueUsd: Math.round(valueUsd), amount: +(valueUsd / 100).toFixed(2), priceUsd: 100 };
+  }).filter((h) => h.valueUsd > 0).sort((a, b) => b.valueUsd - a.valueUsd);
+
+  const nativeValueUsd = +(nativeBalance * nativePriceUsd).toFixed(2);
+  const tokenValueUsd = holdings.reduce((s, h) => s + h.valueUsd, 0);
+  const portfolioValueUsd = +(nativeValueUsd + tokenValueUsd).toFixed(2);
+
+  return { nativeBalance, nativePriceUsd, nativeValueUsd, txCount, tokenCount, nftCount, holdings, tokenValueUsd, portfolioValueUsd, firstTxDate };
+}
+
+const EXAMPLES = {
+  // Matches the real site's own "An empty block" demo frame exactly
+  // (portfolioValueUsd 0, txCount 1) rather than the noisy general formula.
+  empty: () => ({
+    addr: '0xDEMO00000000000000000000000000000EMPTY',
+    stats: { nativeBalance: 0, nativePriceUsd: 1880, nativeValueUsd: 0, txCount: 1, tokenCount: 0, nftCount: 0, holdings: [], tokenValueUsd: 0, portfolioValueUsd: 0, firstTxDate: new Date(Date.now() - 1700 * 86400000).toISOString() },
+  }),
+  trader: () => ({ addr: '0xDEMO000000000000000000000000STOCKTRADER', stats: buildStats(mulberry32(hashSeed('trader')), 0.97, 50) }),
+  random: () => {
+    const hex = '0123456789abcdef';
+    let a = '0x';
+    for (let i = 0; i < 40; i++) a += hex[Math.floor(Math.random() * 16)];
+    return { addr: a, stats: mockStatsFromAddress(a) };
+  },
+};
+
+/* =========================================================================
+   Trait derivation — thresholds for wealthTier/activityLevel/diversityScore
+   reverse-engineered from the real site's own public demo-sequence data
+   (see app/data/demo-sequence-traits.json) and match it. buildingCount and
+   buildingTypeWeights are this replica's own reasonable approximation of
+   the same shape, not a reverse-engineered exact match.
+   ========================================================================= */
+function deriveTraits(stats, rand) {
+  const wealthTier = stats.portfolioValueUsd < 100 ? 0 : stats.portfolioValueUsd < 1000 ? 1 : stats.portfolioValueUsd < 10000 ? 2 : stats.portfolioValueUsd < 100000 ? 3 : 4;
+  const activityLevel = stats.txCount < 10 ? 0 : stats.txCount < 50 ? 1 : stats.txCount < 500 ? 2 : stats.txCount < 5000 ? 3 : 4;
+  const diversityScore = stats.tokenCount === 0 ? 0 : stats.tokenCount <= 2 ? 1 : stats.tokenCount <= 4 ? 2 : stats.tokenCount <= 8 ? 3 : stats.tokenCount <= 20 ? 4 : 5;
+
+  const ageDays = Math.round((Date.now() - new Date(stats.firstTxDate).getTime()) / 86400000);
+  const ageTier = ageDays < 30 ? 'newborn' : ageDays < 180 ? 'young' : ageDays < 730 ? 'established' : 'veteran';
+
+  const buildingCount = clamp(3 + activityLevel * 3 + diversityScore * 2 + wealthTier * 2, 3, 34);
+
+  let park = clamp(0.14 + diversityScore * 0.03, 0.14, 0.34);
+  let commercial = clamp(0.30 - wealthTier * 0.025 - diversityScore * 0.015, 0.10, 0.30);
+  const residual = Math.max(0, 1 - park - commercial);
+  const residential = residual * 0.55;
+  const civic = residual * 0.45;
+  const buildingTypeWeights = { commercial, residential, civic, park };
+
+  const localHour = Math.floor(rand() * 24);
+  const skyMood = localHour < 5 ? 'night' : localHour < 8 ? 'dawn' : localHour < 18 ? 'day' : localHour < 21 ? 'dusk' : 'night';
+  const weatherCondition = pick(rand, ['clear', 'clear', 'clear', 'cloudy', 'cloudy', 'rain', 'snow']);
+
+  const country = pick(rand, COUNTRIES);
+  const holdsRegen = rand() < 0.06;
+  const hasLiberty = wealthTier >= 4 && diversityScore >= 4;
+
+  const top = stats.holdings[0];
+  const concentration = top && stats.portfolioValueUsd > 0 ? +(top.valueUsd / stats.portfolioValueUsd).toFixed(3) : 0;
+
+  return { wealthTier, activityLevel, diversityScore, ageTier, ageDays, buildingCount, buildingTypeWeights, localHour, skyMood, weatherCondition, country, holdsRegen, hasLiberty, concentration };
+}
+
+/* =========================================================================
+   Skyline renderer — every building here is this replica's own procedural
+   art (simple layered rects), not the real site's SVGs. Category color
+   treatment matches the legend; special/unlock buildings get a name tag
+   and extra height so they read as distinct from the base skyline.
+   ========================================================================= */
+const SKY_GRADIENTS = {
+  dawn: ['#2b1b4d', '#8a5a6a', '#e8a06a'],
+  day: ['#3a8fd6', '#8fc6ea', '#cfe8f7'],
+  dusk: ['#1c1240', '#6a2f52', '#e8845a'],
+  night: ['#05040f', '#0d0a24', '#161034'],
+};
+const WEATHER_TINT = { clear: 1, cloudy: 0.82, rain: 0.66, snow: 0.9 };
+
+function buildingSprite(x, w, h, groundY, category, rand, opts) {
+  opts = opts || {};
+  const color = BASE_CATEGORY_COLOR[category] || '#B9A6E0';
+  const parts = [];
+  const y0 = groundY - h;
+  // base mass
+  parts.push(`<rect x="${x}" y="${y0}" width="${w}" height="${h}" fill="${color}" opacity="0.9"/>`);
+  // shadow side
+  parts.push(`<rect x="${x}" y="${y0}" width="${Math.max(2, w * 0.22)}" height="${h}" fill="#000" opacity="0.14"/>`);
+  // roofline cap
+  parts.push(`<rect x="${x}" y="${y0}" width="${w}" height="${Math.max(2, h * 0.02)}" fill="#fff" opacity="0.25"/>`);
+  // windows grid
+  const rows = Math.max(2, Math.floor(h / 10));
+  const cols = Math.max(2, Math.floor(w / 8));
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (rand() < 0.28) continue;
+      const wx = x + 3 + c * ((w - 6) / cols);
+      const wy = y0 + 4 + r * ((h - 8) / rows);
+      const lit = category === 'residential' ? rand() < 0.55 : rand() < 0.3;
+      parts.push(`<rect x="${wx.toFixed(1)}" y="${wy.toFixed(1)}" width="${((w - 6) / cols * 0.6).toFixed(1)}" height="${((h - 8) / rows * 0.5).toFixed(1)}" fill="${lit ? '#FFE9A8' : '#0B1622'}" opacity="${lit ? 0.85 : 0.5}"/>`);
+    }
+  }
+  if (category === 'park') {
+    parts.push(`<circle cx="${x + w / 2}" cy="${y0 - 4}" r="${w * 0.32}" fill="#7fbf5a" opacity="0.9"/>`);
+  }
+  if (opts.special) {
+    parts.push(`<rect x="${x}" y="${y0}" width="${w}" height="3" fill="#CCFF00"/>`);
+    parts.push(`<text x="${x + w / 2}" y="${y0 - 8}" font-size="9" fill="#CCFF00" text-anchor="middle" font-family="monospace">${opts.label}</text>`);
+  }
+  if (opts.billboard) {
+    parts.push(`<rect x="${x - 4}" y="${y0 - 20}" width="${w + 8}" height="14" fill="#0A0D08" stroke="#7D9B14"/>`);
+    parts.push(`<text x="${x + w / 2}" y="${y0 - 10}" font-size="9" fill="#CCFF00" text-anchor="middle" font-family="monospace">${opts.billboard}</text>`);
+  }
+  return parts.join('');
+}
+
+function renderCitySvg(stats, traits, seed, billboardText) {
+  const rand = mulberry32(seed ^ 0x9e3779b9);
+  const W = 1200, H = 420, groundY = 360;
+  const grad = SKY_GRADIENTS[traits.skyMood] || SKY_GRADIENTS.day;
+  const tint = WEATHER_TINT[traits.weatherCondition] ?? 1;
+
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges">`;
+  svg += `<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="${grad[0]}"/><stop offset="55%" stop-color="${grad[1]}"/><stop offset="100%" stop-color="${grad[2]}"/>
+  </linearGradient></defs>`;
+  svg += `<rect width="${W}" height="${H}" fill="url(#sky)" opacity="${tint}"/>`;
+  if (traits.weatherCondition === 'cloudy' || traits.weatherCondition === 'rain') {
+    for (let i = 0; i < 6; i++) svg += `<ellipse cx="${rand() * W}" cy="${30 + rand() * 60}" rx="${40 + rand() * 60}" ry="14" fill="#fff" opacity="0.08"/>`;
+  }
+  if (traits.weatherCondition === 'rain') {
+    for (let i = 0; i < 40; i++) { const rx = rand() * W, ry = rand() * groundY; svg += `<line x1="${rx}" y1="${ry}" x2="${rx - 4}" y2="${ry + 10}" stroke="#9fd3ff" stroke-width="1" opacity="0.35"/>`; }
+  }
+  if (traits.weatherCondition === 'snow') {
+    for (let i = 0; i < 50; i++) svg += `<circle cx="${rand() * W}" cy="${rand() * groundY}" r="${1 + rand() * 1.5}" fill="#fff" opacity="0.6"/>`;
+  }
+  // ground
+  svg += `<rect x="0" y="${groundY}" width="${W}" height="${H - groundY}" fill="#141812"/>`;
+  svg += `<rect x="0" y="${groundY}" width="${W}" height="3" fill="#2a3320"/>`;
+
+  const count = clamp(traits.buildingCount, 3, 40);
+  const specialSyms = stats.holdings.filter((h) => TOKEN_BUILDINGS.some((t) => t.sym === h.symbol)).slice(0, 4);
+  const weights = traits.buildingTypeWeights;
+  const catEntries = Object.entries(weights);
+
+  let x = 10;
+  const avgW = (W - 20) / Math.max(count, 1);
+  const buildings = [];
+  for (let i = 0; i < count; i++) {
+    const w = clamp(avgW * (0.6 + rand() * 0.7), 18, 70);
+    const heightFactor = 0.25 + rand() * 0.5 + traits.wealthTier * 0.09 + traits.activityLevel * 0.05;
+    const h = clamp(40 + heightFactor * 220, 30, 300);
+    let r = rand(), acc = 0, category = 'commercial';
+    for (const [cat, wt] of catEntries) { acc += wt; if (r <= acc) { category = cat; break; } }
+    buildings.push({ x, w, h, category });
+    x += w + 3;
+  }
+  buildings.sort((a, b) => a.h - b.h);
+  for (const b of buildings) svg += buildingSprite(b.x, b.w, b.h, groundY, b.category, rand);
+
+  // special unlock buildings, placed on top of the tallest slots
+  specialSyms.forEach((h, i) => {
+    const tb = TOKEN_BUILDINGS.find((t) => t.sym === h.symbol);
+    const bx = 40 + i * 140;
+    const bw = 46, bh = clamp(160 + traits.wealthTier * 20, 160, 260);
+    svg += buildingSprite(bx, bw, bh, groundY, 'commercial', rand, { special: true, label: tb.name });
+  });
+
+  if (traits.hasLiberty) {
+    const bx = W / 2 - 20;
+    svg += buildingSprite(bx, 40, 340, groundY, 'civic', rand, { special: true, label: 'Liberty' });
+  }
+
+  if (billboardText) {
+    svg += buildingSprite(W - 160, 60, 120, groundY, 'commercial', rand, { billboard: billboardText.toUpperCase() });
+  }
+
+  // a couple of simple animated vehicles along the street
+  for (let i = 0; i < 3; i++) {
+    const vy = groundY + 12 + i * 8;
+    const dur = 14 + i * 6;
+    svg += `<rect x="0" y="${vy}" width="14" height="6" fill="#${['E8845A', '7FCBFF', 'CCFF00'][i]}" rx="1">
+      <animate attributeName="x" values="-20;${W + 20}" dur="${dur}s" repeatCount="indefinite"/>
+    </rect>`;
+  }
+
+  svg += `</svg>`;
+  return svg;
+}
+
+/* =========================================================================
+   Render orchestration
+   ========================================================================= */
+let currentSvgString = '';
+let currentAddr = '';
+let currentStats = null;
+
+function fmtUsd(n) { return '$' + Math.round(n).toLocaleString(); }
+function fmtPct(n) { return Math.round(n * 100) + '%'; }
+
+function renderAll(addr, stats) {
+  currentAddr = addr;
+  currentStats = stats;
+  const seed = hashSeed(addr.toLowerCase());
+  const rand = mulberry32(seed);
+  const traits = deriveTraits(stats, rand);
+
+  $('layout').hidden = false;
+  $('emptyState').hidden = true;
+
+  const svg = renderCitySvg(stats, traits, seed, null);
+  currentSvgString = svg;
+  $('cityFrame').innerHTML = svg;
+
+  $('cityMeta').innerHTML = `
+    <span>Buildings <b>${traits.buildingCount}</b></span>
+    <span>Sky <b>${traits.skyMood}</b></span>
+    <span>Weather <b>${traits.weatherCondition}</b></span>
+    <span>Portfolio <b>${fmtUsd(stats.portfolioValueUsd)}</b></span>`;
+
+  $('traitGrid').innerHTML = [
+    ['Wealth tier', traits.wealthTier + ' / 4'],
+    ['Activity level', traits.activityLevel + ' / 4'],
+    ['Diversity score', traits.diversityScore + ' / 5'],
+    ['Age tier', traits.ageTier],
+    ['Concentration', fmtPct(traits.concentration)],
+    ['Has Liberty', traits.hasLiberty ? 'yes' : 'no'],
+  ].map(([k, v]) => `<div class="trait-row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
+
+  const cats = Object.entries(traits.buildingTypeWeights);
+  $('weightBar').innerHTML = cats.map(([cat, w]) => `<div style="width:${(w * 100).toFixed(1)}%;background:${BASE_CATEGORY_COLOR[cat]};"></div>`).join('');
+  $('weightLegend').innerHTML = cats.map(([cat, w]) => `<span><i style="background:${BASE_CATEGORY_COLOR[cat]};"></i>${BASE_CATEGORY_LABEL[cat]} ${fmtPct(w)}</span>`).join('');
+
+  $('holdingsBody').innerHTML = stats.holdings.length
+    ? stats.holdings.slice(0, 8).map((h) => `
+      <div class="holding-row">
+        <span class="holding-sym">${h.symbol}</span>
+        <span class="holding-bar-wrap"><span class="holding-bar" style="width:${Math.min(100, (h.valueUsd / stats.holdings[0].valueUsd) * 100)}%;"></span></span>
+        <span class="holding-val">${fmtUsd(h.valueUsd)}</span>
+      </div>`).join('')
+    : '<div style="color:var(--text-faint);font-size:.76rem;">No positions — nothing but the empty block.</div>';
+
+  $('statsBody').innerHTML = [
+    ['Native balance', stats.nativeBalance + ' RBH'],
+    ['Native value', fmtUsd(stats.nativeValueUsd)],
+    ['Token value', fmtUsd(stats.tokenValueUsd)],
+    ['Tx count', stats.txCount.toLocaleString()],
+    ['Token count', stats.tokenCount],
+    ['NFT count', stats.nftCount],
+    ['First tx', new Date(stats.firstTxDate).toLocaleDateString()],
+  ].map(([k, v]) => `<div class="stat-line"><span>${k}</span><b>${v}</b></div>`).join('');
+  $('rawData').textContent = JSON.stringify({ address: addr, stats, traits }, null, 2);
+
+  const flagEmoji = traits.country.code.toUpperCase().replace(/./g, (c) => String.fromCodePoint(127397 + c.charCodeAt(0)));
+  $('passportFlag').textContent = flagEmoji;
+  $('passportCountry').textContent = traits.country.name;
+  $('passportContinent').textContent = traits.country.continent.replace('-', ' ');
+  const hh = String(traits.localHour).padStart(2, '0');
+  $('passportTime').textContent = hh + ':00';
+  $('passportSky').textContent = traits.skyMood;
+  $('passportWeather').textContent = traits.weatherCondition;
+
+  renderMemory(addr);
+}
+
+function renderMemory(addr) {
+  const key = 'cos-city-memory:' + addr.toLowerCase();
+  let mem;
+  try { mem = JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) { mem = null; }
+  const now = Date.now();
+  if (!mem) mem = { firstSeen: now, visits: 0 };
+  mem.visits += 1;
+  mem.lastSeen = now;
+  try { localStorage.setItem(key, JSON.stringify(mem)); } catch (e) {}
+
+  $('memoryBody').innerHTML = [
+    ['First generated', new Date(mem.firstSeen).toLocaleString()],
+    ['Times generated', mem.visits],
+    ['Last generated', new Date(mem.lastSeen).toLocaleString()],
+  ].map(([k, v]) => `<div class="memory-row"><span>${k}</span><b>${v}</b></div>`).join('');
+}
+
+function buildGalleries() {
+  $('galleryBase').innerHTML = BASE_CATEGORIES.map((c) => `
+    <div class="gallery-item"><div class="swatch" style="background:${BASE_CATEGORY_COLOR[c]};"></div><div class="label">${BASE_CATEGORY_LABEL[c]}</div></div>`).join('');
+  $('gallerySpecial').innerHTML = SPECIAL_BUILDINGS.concat(TOKEN_BUILDINGS.map((t) => ({ id: t.sym, name: t.name }))).map((b) => `
+    <div class="gallery-item"><div class="swatch" style="background:linear-gradient(135deg,#CCFF00,#7D9B14);"></div><div class="label">${b.name}</div></div>`).join('');
+  $('galleryVehicles').innerHTML = VEHICLES.map((v) => `
+    <div class="gallery-item"><div class="swatch" style="background:#7FCBFF;"></div><div class="label">${v}</div></div>`).join('');
+}
+
+/* =========================================================================
+   Wiring
+   ========================================================================= */
+const $ = (id) => document.getElementById(id);
+
+$('generateBtn').addEventListener('click', () => {
+  const addr = $('addrIn').value.trim();
+  if (!addr) { $('addrIn').focus(); return; }
+  renderAll(addr, mockStatsFromAddress(addr));
+});
+$('addrIn').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('generateBtn').click(); });
+
+document.querySelectorAll('[data-example]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const ex = EXAMPLES[btn.dataset.example]();
+    $('addrIn').value = ex.addr;
+    renderAll(ex.addr, ex.stats);
+  });
+});
+
+$('billboardBtn').addEventListener('click', () => {
+  if (!currentAddr || !currentStats) return;
+  const seed = hashSeed(currentAddr.toLowerCase());
+  const rand = mulberry32(seed);
+  const traits = deriveTraits(currentStats, rand);
+  const svg = renderCitySvg(currentStats, traits, seed, $('billboardIn').value.trim());
+  currentSvgString = svg;
+  $('cityFrame').innerHTML = svg;
+});
+
+$('rawToggleBtn').addEventListener('click', () => {
+  $('rawData').classList.toggle('is-on');
+  $('rawToggleBtn').textContent = $('rawData').classList.contains('is-on') ? 'Hide raw data' : 'Show raw data';
+});
+
+function download(filename, blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+$('exportSvgBtn').addEventListener('click', () => {
+  if (!currentSvgString) return;
+  download('city.svg', new Blob([currentSvgString], { type: 'image/svg+xml' }));
+});
+$('exportPngBtn').addEventListener('click', () => {
+  if (!currentSvgString) return;
+  const img = new Image();
+  const svgBlob = new Blob([currentSvgString], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(svgBlob);
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200; canvas.height = 420;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    URL.revokeObjectURL(url);
+    canvas.toBlob((blob) => download('city.png', blob));
+  };
+  img.src = url;
+});
+
+buildGalleries();
+</script>
+</body>
+</html>
