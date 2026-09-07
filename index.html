@@ -76,7 +76,7 @@
   .icon-btn{
     display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:transparent;border:1px solid var(--border);
     color:var(--text-muted);cursor:pointer;border-radius:3px;font-family:inherit;font-size:.7rem;
-    min-width:36px;min-height:36px;padding:.3rem .5rem;
+    min-width:36px;min-height:36px;padding:.3rem .5rem;text-decoration:none;
   }
   .icon-btn:hover{border-color:var(--accent);color:var(--accent);}
   .icon-btn .ic{font-size:1rem;line-height:1;}
@@ -334,6 +334,7 @@
       <h1>Building Designer</h1>
     </div>
     <div class="titlebar-actions">
+      <a class="icon-btn" href="dashboard.html" title="Control Room — view all repos &amp; pages"><span class="ic">&#9635;</span><span class="lbl">Dashboard</span></a>
       <label class="icon-btn" title="Import .json"><span class="ic">&uarr;</span><span class="lbl">Import</span><input type="file" id="importInput" accept="application/json,.json" hidden></label>
       <button class="icon-btn" id="exportJsonBtn" title="Export .json"><span class="ic">&darr;</span><span class="lbl">.json</span></button>
       <button class="icon-btn" id="exportPngBtn" title="Export .png"><span class="ic">&darr;</span><span class="lbl">.png</span></button>

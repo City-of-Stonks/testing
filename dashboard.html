@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control Room</title>
+<style>
+  :root{
+    --bg:#060806; --panel:#0C0F0A; --panel-alt:#0A0D08; --panel-raised:#10140C;
+    --border:#1F2A16; --border-strong:#7D9B14;
+    --accent:#CCFF00; --accent-ink:#0B1400;
+    --text:#D7E2CC; --text-muted:#93A187; --text-faint:#5F6B57;
+    --danger:#FF5C4D; --warn:#E8B84A;
+    --font-mono:ui-monospace,'SF Mono',Menlo,'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-mono);}
+  ::selection{background:var(--accent);color:var(--accent-ink);}
+  a{color:inherit;}
+  button, select, input{font-family:inherit;}
+
+  .bp-grid{
+    position:fixed;inset:0;z-index:-1;
+    background-image:linear-gradient(rgba(125,155,20,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(125,155,20,.10) 1px, transparent 1px);
+    background-size:28px 28px;
+    background-color:var(--bg);
+  }
+
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    padding:.9rem 1.3rem;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:10;
+  }
+  .topbar-id{display:flex;align-items:baseline;gap:.55rem;}
+  .kicker{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);}
+  h1{font-size:1.15rem;margin:0;letter-spacing:.02em;font-weight:700;}
+  .nav-links{display:flex;gap:.5rem;flex-wrap:wrap;}
+  .nav-link{
+    display:inline-flex;align-items:center;gap:.35rem;background:transparent;border:1px solid var(--border);
+    color:var(--text-muted);padding:.45rem .8rem;font-size:.72rem;text-decoration:none;border-radius:3px;
+  }
+  .nav-link:hover{border-color:var(--accent);color:var(--accent);}
+
+  main{max-width:1200px;margin:0 auto;padding:1.6rem 1.3rem 4rem;}
+
+  .section-head{display:flex;align-items:baseline;gap:.7rem;margin:2.2rem 0 1rem;}
+  .section-head:first-child{margin-top:0;}
+  .section-head h2{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0;}
+  .section-head .count{font-size:.7rem;color:var(--text-faint);}
+  .section-sub{font-size:.78rem;color:var(--text-muted);margin:-.5rem 0 1.1rem;line-height:1.6;max-width:70ch;}
+
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.9rem;}
+
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:5px;display:flex;flex-direction:column;overflow:hidden;}
+  .card-body{padding:.95rem 1rem;display:flex;flex-direction:column;gap:.5rem;flex:1;}
+  .card-title-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
+  .card-title{font-size:.92rem;font-weight:700;color:var(--text);}
+  .badge{
+    font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:10px;
+    border:1px solid var(--border-strong);color:var(--accent);white-space:nowrap;flex-shrink:0;
+  }
+  .badge.private{border-color:var(--border);color:var(--text-faint);}
+  .badge.pages{border-color:#4FB3FF;color:#7FCBFF;}
+  .card-desc{font-size:.76rem;color:var(--text-muted);line-height:1.55;min-height:1.6em;}
+  .card-meta{display:flex;gap:.9rem;flex-wrap:wrap;font-size:.66rem;color:var(--text-faint);}
+  .card-meta b{color:var(--text-muted);}
+  .card-actions{display:flex;gap:.5rem;margin-top:auto;padding-top:.3rem;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:.35rem;background:var(--accent);color:var(--accent-ink);border:none;
+    padding:.45rem .75rem;font-weight:700;font-size:.68rem;letter-spacing:.02em;text-transform:uppercase;
+    cursor:pointer;border-radius:3px;text-decoration:none;
+  }
+  .btn:hover{background:#DFFF66;}
+  .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-muted);}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  .preview-wrap{border-top:1px solid var(--border);background:#000;}
+  .preview-wrap iframe{display:block;width:100%;height:340px;border:0;background:#fff;}
+  .preview-fallback{padding:1rem;font-size:.7rem;color:var(--text-faint);text-align:center;}
+
+  .status-line{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:var(--text-faint);margin-bottom:1rem;}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--text-faint);flex-shrink:0;}
+  .status-dot.ok{background:var(--accent);}
+  .status-dot.err{background:var(--danger);}
+
+  .empty-note{font-size:.76rem;color:var(--text-faint);padding:1rem;border:1px dashed var(--border);border-radius:5px;}
+
+  footer{max-width:1200px;margin:0 auto;padding:1rem 1.3rem 2.5rem;color:var(--text-faint);font-size:.66rem;line-height:1.7;text-align:center;}
+  footer a{color:var(--text-muted);}
+</style>
+</head>
+<body>
+<div class="bp-grid"></div>
+
+<header class="topbar">
+  <div class="topbar-id">
+    <span class="kicker">City of Stonks</span>
+    <h1>Control Room</h1>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">&larr; Building Designer</a>
+    <a class="nav-link" href="https://github.com/City-of-Stonks" target="_blank" rel="noopener">GitHub Org &#8599;</a>
+  </div>
+</header>
+
+<main>
+
+  <div class="section-head"><h2>Live Pages</h2><span class="count" id="pagesCount"></span></div>
+  <p class="section-sub">Every published GitHub Pages site under the org, discovered live from each public repo's <code>has_pages</code> flag — not a hardcoded list. Click Preview to load a site inline without leaving this page.</p>
+  <div id="pagesStatus" class="status-line"><span class="status-dot"></span><span>Loading repos from the GitHub API&hellip;</span></div>
+  <div class="card-grid" id="pagesGrid"></div>
+
+  <div class="section-head"><h2>Public Repositories</h2><span class="count" id="publicCount"></span></div>
+  <p class="section-sub">Fetched live from <code>api.github.com/orgs/City-of-Stonks/repos</code> — no token involved, so this only ever sees what's already public.</p>
+  <div class="card-grid" id="publicGrid"></div>
+
+  <div class="section-head"><h2>Private Repositories</h2><span class="count" id="privateCount"></span></div>
+  <p class="section-sub">A static list — a public page can't safely hold a token to query private repos, so these are curated by hand and link straight to GitHub.</p>
+  <div class="card-grid" id="privateGrid"></div>
+
+</main>
+
+<footer>
+  Runs entirely in your browser — the only network calls are to the public GitHub REST API and to each Pages site you choose to preview.<br>
+  Part of the <a href="https://github.com/City-of-Stonks/testing" target="_blank" rel="noopener">testing</a> staging repo. Independent fan-made tooling, not officially affiliated with cityofstonks.com.
+</footer>
+
+<script>
+const ORG = 'City-of-Stonks';
+const ORG_PAGES_HOST = 'city-of-stonks.github.io'; // org login, lowercased — how GitHub Pages hostnames are derived
+
+// Repos that can't be discovered via the unauthenticated API (they're
+// private) get a small hand-maintained entry instead — no token is ever
+// embedded in this page to query them "for real".
+const PRIVATE_REPOS = [
+  { name: 'city-clerk', desc: 'Discord role-verification bot (Cloudflare Worker) — checks on-chain Key/NFT holdings against linked wallets.' },
+  { name: 'city-raffle', desc: 'Discord raffle bot (Cloudflare Worker) — ticket counts come from live on-chain Key balances, shares the wallet-link KV with city-clerk.' },
+];
+
+function timeAgo(iso) {
+  const s = Math.max(1, Math.floor((Date.now() - new Date(iso).getTime()) / 1000));
+  const units = [[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];
+  for (const [secs, label] of units) if (s >= secs) return Math.floor(s / secs) + label + ' ago';
+  return s + 's ago';
+}
+function esc(str) {
+  return String(str || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function pagesUrlFor(repoName) {
+  return `https://${ORG_PAGES_HOST}/${repoName}/`;
+}
+
+function repoCard(repo, { showPreview } = {}) {
+  const pagesUrl = repo.has_pages ? pagesUrlFor(repo.name) : null;
+  const previewId = 'prev-' + repo.name.replace(/[^a-z0-9-]/gi, '');
+  return `
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title-row">
+          <span class="card-title">${esc(repo.name)}</span>
+          ${repo.has_pages ? '<span class="badge pages">Pages Live</span>' : ''}
+        </div>
+        <div class="card-desc">${esc(repo.description) || '<span style="color:var(--text-faint);">No description set.</span>'}</div>
+        <div class="card-meta">
+          ${repo.language ? `<span><b>${esc(repo.language)}</b></span>` : ''}
+          <span>&#9733; <b>${repo.stargazers_count ?? 0}</b></span>
+          <span>updated <b>${timeAgo(repo.updated_at)}</b></span>
+        </div>
+        <div class="card-actions">
+          <a class="btn ghost" href="${repo.html_url}" target="_blank" rel="noopener">Repo &#8599;</a>
+          ${pagesUrl ? `<a class="btn ghost" href="${pagesUrl}" target="_blank" rel="noopener">Open Page &#8599;</a>` : ''}
+          ${pagesUrl && showPreview ? `<button class="btn" data-preview-toggle="${previewId}" data-url="${pagesUrl}">Preview</button>` : ''}
+        </div>
+      </div>
+      ${pagesUrl && showPreview ? `<div class="preview-wrap" id="${previewId}" hidden></div>` : ''}
+    </div>`;
+}
+
+function privateCard(repo) {
+  return `
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title-row">
+          <span class="card-title">${esc(repo.name)}</span>
+          <span class="badge private">Private</span>
+        </div>
+        <div class="card-desc">${esc(repo.desc)}</div>
+        <div class="card-actions">
+          <a class="btn ghost" href="https://github.com/${ORG}/${repo.name}" target="_blank" rel="noopener">Repo &#8599;</a>
+        </div>
+      </div>
+    </div>`;
+}
+
+function wirePreviewToggles(container) {
+  container.querySelectorAll('[data-preview-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const wrap = document.getElementById(btn.dataset.previewToggle);
+      const isOpen = !wrap.hidden;
+      if (isOpen) {
+        wrap.hidden = true;
+        wrap.innerHTML = '';
+        btn.textContent = 'Preview';
+        return;
+      }
+      wrap.hidden = false;
+      wrap.innerHTML = `<iframe src="${btn.dataset.url}" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        <div class="preview-fallback">If the preview above stays blank, the site may block being embedded — <a href="${btn.dataset.url}" target="_blank" rel="noopener">open it directly</a> instead.</div>`;
+      btn.textContent = 'Hide Preview';
+    });
+  });
+}
+
+async function loadRepos() {
+  const statusEl = document.getElementById('pagesStatus');
+  try {
+    const res = await fetch(`https://api.github.com/orgs/${ORG}/repos?per_page=100&sort=updated`, {
+      headers: { Accept: 'application/vnd.github+json' },
+    });
+    if (!res.ok) throw new Error('GitHub API returned ' + res.status);
+    const repos = await res.json();
+
+    const withPages = repos.filter((r) => r.has_pages && !r.archived);
+    const pagesGrid = document.getElementById('pagesGrid');
+    pagesGrid.innerHTML = withPages.length
+      ? withPages.map((r) => repoCard(r, { showPreview: true })).join('')
+      : '<div class="empty-note">No repos with GitHub Pages enabled were found.</div>';
+    wirePreviewToggles(pagesGrid);
+    document.getElementById('pagesCount').textContent = withPages.length ? `${withPages.length} site${withPages.length === 1 ? '' : 's'}` : '';
+
+    const publicGrid = document.getElementById('publicGrid');
+    publicGrid.innerHTML = repos.length
+      ? repos.map((r) => repoCard(r, { showPreview: false })).join('')
+      : '<div class="empty-note">No public repos found.</div>';
+    document.getElementById('publicCount').textContent = repos.length ? `${repos.length} repo${repos.length === 1 ? '' : 's'}` : '';
+
+    statusEl.innerHTML = `<span class="status-dot ok"></span><span>Loaded ${repos.length} public repo${repos.length === 1 ? '' : 's'} from the GitHub API just now.</span>`;
+  } catch (err) {
+    statusEl.innerHTML = `<span class="status-dot err"></span><span>Couldn't reach the GitHub API (${esc(err.message)}) — you may be rate-limited (60 requests/hour when signed out). Try again shortly, or use the links on <a href="https://github.com/${ORG}" target="_blank" rel="noopener">the org page</a> directly.</span>`;
+    document.getElementById('pagesGrid').innerHTML = '<div class="empty-note">Live data unavailable right now.</div>';
+    document.getElementById('publicGrid').innerHTML = '<div class="empty-note">Live data unavailable right now.</div>';
+  }
+}
+
+document.getElementById('privateGrid').innerHTML = PRIVATE_REPOS.map(privateCard).join('');
+document.getElementById('privateCount').textContent = `${PRIVATE_REPOS.length} repo${PRIVATE_REPOS.length === 1 ? '' : 's'}`;
+loadRepos();
+</script>
+</body>
+</html>
