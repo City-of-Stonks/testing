@@ -166,6 +166,65 @@
   .file-btn:hover{border-color:var(--accent);color:var(--accent);}
   @media (max-width:760px){ .topbar{padding:.6rem .7rem;} .topbar-title h1{font-size:1rem;} }
 
+  /* ---- menu bar — File/Edit/View/Help, the thing that most says "real
+     creative application" at a glance. Every item here just calls the same
+     functions the toolbar buttons and keyboard shortcuts already do; it's
+     a second way in, not new behavior. ---- */
+  .menubar{
+    display:flex;background:var(--panel-alt);border-bottom:1px solid var(--border);
+    padding:0 .5rem;position:sticky;top:0;z-index:11;
+  }
+  .menu{position:relative;}
+  .menu-trigger{
+    background:transparent;border:none;color:var(--text-muted);padding:.45rem .8rem;
+    font-size:.76rem;cursor:pointer;font-family:inherit;
+  }
+  .menu-trigger:hover, .menu.is-open .menu-trigger{background:var(--border);color:var(--text);}
+  .menu-dropdown{
+    display:none;position:absolute;top:100%;left:0;background:var(--panel);border:1px solid var(--border-strong);
+    min-width:210px;z-index:50;box-shadow:0 12px 28px rgba(0,0,0,.55);flex-direction:column;padding:.3rem;
+  }
+  .menu.is-open .menu-dropdown{display:flex;}
+  .menu-dropdown button{
+    background:transparent;border:none;color:var(--text);text-align:left;padding:.5rem .6rem;font-size:.78rem;
+    cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-radius:2px;
+    font-family:inherit;width:100%;
+  }
+  .menu-dropdown button:hover{background:rgba(204,255,0,.1);color:var(--accent);}
+  .menu-dropdown kbd{font-size:.68rem;}
+  .menu-info{padding:.5rem .6rem;font-size:.7rem;color:var(--text-muted);line-height:1.55;max-width:260px;}
+  .menu-divider{border:none;border-top:1px solid var(--border);margin:.25rem 0;}
+
+  /* ---- dockers — every side panel gets a collapse toggle, Krita-style.
+     Collapsing is real (hides panel-body), not decorative. ---- */
+  .docker-toggle{
+    background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:.6rem;padding:.1rem .3rem;
+    margin-left:auto;font-family:inherit;
+  }
+  .docker-toggle:hover{color:var(--accent);}
+  .panel.collapsed .panel-body{display:none;}
+  .panel-title{gap:.4rem;}
+
+  /* ---- status bar — replaces the old inline canvas stats with a proper
+     bottom bar (cursor position, canvas size, painted count, current tool,
+     current zoom), sticky to the viewport bottom. ---- */
+  .statusbar{
+    position:sticky;bottom:0;z-index:9;background:var(--panel-alt);border-top:1px solid var(--border);
+    display:flex;gap:1.1rem;padding:.4rem .9rem;font-size:.68rem;color:var(--text-muted);flex-wrap:wrap;
+  }
+  .statusbar b{color:var(--accent);}
+  .statusbar-spacer{flex:1;min-width:.5rem;}
+  @media (max-width:600px){ .statusbar{gap:.6rem .9rem;} }
+
+  /* ---- tool options docker — contextual, changes with the active tool,
+     same idea as Krita's own Tool Options panel. ---- */
+  .brush-size-row{display:flex;gap:.35rem;}
+  .brush-size-row button{
+    flex:1;background:var(--panel-alt);border:1px solid var(--border);color:var(--text-muted);padding:.5rem .3rem;
+    font-size:.72rem;cursor:pointer;min-height:40px;border-radius:3px;font-family:inherit;
+  }
+  .brush-size-row button.is-on{border-color:var(--border-strong);color:var(--accent);background:rgba(204,255,0,.08);}
+
   /* ---- tooltips — replace the old always-on paragraph hints. Click-to-
      toggle (via .is-open) covers touch devices where :hover never fires;
      hover/focus still work for mouse and keyboard. ---- */
@@ -189,13 +248,52 @@
 <body>
 <div class="bp-grid"></div>
 
+<nav class="menubar" id="menubar">
+  <div class="menu" data-menu="file">
+    <button class="menu-trigger" type="button">File</button>
+    <div class="menu-dropdown">
+      <button type="button" data-action="import">Import .json&hellip;</button>
+      <button type="button" data-action="exportJson">Export .json</button>
+      <button type="button" data-action="exportPng">Export .png</button>
+    </div>
+  </div>
+  <div class="menu" data-menu="edit">
+    <button class="menu-trigger" type="button">Edit</button>
+    <div class="menu-dropdown">
+      <button type="button" data-action="undo">Undo <kbd>Ctrl+Z</kbd></button>
+      <button type="button" data-action="redo">Redo <kbd>Ctrl+Y</kbd></button>
+      <hr class="menu-divider">
+      <button type="button" data-action="random">Random Building</button>
+      <button type="button" data-action="clear">Clear Canvas</button>
+    </div>
+  </div>
+  <div class="menu" data-menu="view">
+    <button class="menu-trigger" type="button">View</button>
+    <div class="menu-dropdown">
+      <button type="button" data-action="zoom6">Zoom 6&times;</button>
+      <button type="button" data-action="zoom10">Zoom 10&times;</button>
+      <button type="button" data-action="zoom16">Zoom 16&times;</button>
+      <button type="button" data-action="zoom24">Zoom 24&times;</button>
+      <hr class="menu-divider">
+      <button type="button" data-action="toggleGrid">Toggle Grid Lines</button>
+      <button type="button" data-action="toggleMirror">Toggle Mirror Mode</button>
+    </div>
+  </div>
+  <div class="menu" data-menu="help">
+    <button class="menu-trigger" type="button">Help</button>
+    <div class="menu-dropdown">
+      <div class="menu-info"><b style="color:var(--text);">Shortcuts</b><br>B pen &middot; L line &middot; R rect &middot; F fill &middot; I pick &middot; E erase<br>Ctrl+Z / Ctrl+Y undo / redo</div>
+      <hr class="menu-divider">
+      <div class="menu-info">Paint roles, not colors — every cell you place is an abstract building part that City of Stonks recolors per city context and stretches to fit whatever height a wallet needs.</div>
+    </div>
+  </div>
+</nav>
+
 <header class="topbar">
   <div class="topbar-title">
     <div>
       <span class="kicker">City of Stonks</span>
-      <h1>Building Designer
-        <span class="tt" tabindex="0" data-tooltip="Paint roles, not colors. Every cell you place is an abstract part — a window, a trim line, a rooftop object — that City of Stonks recolors per city context and stretches to fit whatever height a wallet actually needs. Design once, it adapts everywhere.">?</span>
-      </h1>
+      <h1>Building Designer</h1>
     </div>
   </div>
   <div class="topbar-actions">
@@ -209,7 +307,7 @@
 
   <div class="toolCol">
     <div class="panel">
-      <div class="panel-title"><span>Tools</span> <span class="tt" tabindex="0" data-tooltip="Shortcuts: B pen · L line · R rect · F fill · I pick · E erase · Ctrl+Z / Ctrl+Y undo/redo">?</span></div>
+      <div class="panel-title"><span>Tools</span> <span class="tt" tabindex="0" data-tooltip="Shortcuts: B pen · L line · R rect · F fill · I pick · E erase · Ctrl+Z / Ctrl+Y undo/redo">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
       <div class="panel-body">
         <div class="tool-grid">
           <button class="tool-btn is-on" data-tool="pen"><span class="ic">&#9998;</span>Pen</button>
@@ -236,7 +334,20 @@
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span>Role Palette</span></div>
+      <div class="panel-title"><span>Tool Options</span> <span class="tt" tabindex="0" data-tooltip="Applies to Pen and Erase — paints a size×size block centered on the cursor instead of a single cell.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
+      <div class="panel-body">
+        <span class="field-label" id="toolOptionsLabel">Brush Size — Pen</span>
+        <div class="brush-size-row">
+          <button data-brush="1" class="is-on">1px</button>
+          <button data-brush="2">2px</button>
+          <button data-brush="3">3px</button>
+          <button data-brush="4">4px</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span>Role Palette</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
       <div class="panel-body" id="rolePalette"></div>
     </div>
   </div>
@@ -244,12 +355,7 @@
   <div class="canvasCol">
     <div class="panel">
       <div class="canvas-toolbar">
-        <div class="canvas-stats">
-          <span>X <b id="statX">&mdash;</b></span>
-          <span>Y <b id="statY">&mdash;</b></span>
-          <span>Size <b id="statSize">&mdash;</b></span>
-          <span>Painted <b id="statPainted">0</b></span>
-        </div>
+        <span class="field-label" style="margin:0;">Canvas</span>
         <div style="display:flex;gap:.5rem;">
           <button class="btn" id="randomBtn" style="width:auto;margin:0;padding:.4rem .9rem;background:var(--border-strong);color:#0B1400;">&#127922; Random Building</button>
           <button class="btn ghost" id="clearBtn" style="width:auto;margin:0;padding:.4rem .8rem;">Clear</button>
@@ -261,7 +367,7 @@
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span>Canvas Dimensions</span> <span class="tt" tabindex="0" data-tooltip="Resizing keeps whatever's already painted, anchored to the top-left corner.">?</span></div>
+      <div class="panel-title"><span>Canvas Dimensions</span> <span class="tt" tabindex="0" data-tooltip="Resizing keeps whatever's already painted, anchored to the top-left corner.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
       <div class="panel-body">
         <div class="field-row">
           <div><span class="field-label">Width (cells)</span><input type="number" id="gridWIn" min="20" max="50" value="30"></div>
@@ -272,7 +378,7 @@
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span>Repeating Floors</span> <span class="tt" tabindex="0" data-tooltip="Rows above the band render once as the roofline cap. Rows inside the band repeat to fill whatever height a building needs. Rows below render once as the ground floor.">?</span></div>
+      <div class="panel-title"><span>Repeating Floors</span> <span class="tt" tabindex="0" data-tooltip="Rows above the band render once as the roofline cap. Rows inside the band repeat to fill whatever height a building needs. Rows below render once as the ground floor.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
       <div class="panel-body">
         <div class="field-row">
           <div><span class="field-label">Cap ends (row)</span><input type="number" id="bandStartIn" min="0" value="4"></div>
@@ -287,7 +393,7 @@
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span>Submission Details</span> <span class="tt" tabindex="0" data-tooltip="This is a local design tool — the Export buttons up top save files to your computer, they don't submit anywhere. Send the exported .json to however City of Stonks actually collects submissions.">?</span></div>
+      <div class="panel-title"><span>Submission Details</span> <span class="tt" tabindex="0" data-tooltip="This is a local design tool — the Export buttons up top save files to your computer, they don't submit anywhere. Send the exported .json to however City of Stonks actually collects submissions.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
       <div class="panel-body">
         <span class="field-label">Building name</span>
         <input type="text" id="nameIn" placeholder="e.g. Ledger Tower" style="margin-bottom:.7rem;">
@@ -301,13 +407,23 @@
 
   <div class="previewCol">
     <div class="panel">
-      <div class="panel-title"><span>Live Context Preview</span> <span class="tt" tabindex="0" data-tooltip="The exact same role-map, recolored and restretched per context — this is what &quot;paint roles, not colors&quot; actually buys you.">?</span></div>
+      <div class="panel-title"><span>Live Context Preview</span> <span class="tt" tabindex="0" data-tooltip="The exact same role-map, recolored and restretched per context — this is what &quot;paint roles, not colors&quot; actually buys you.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
       <div class="panel-body">
         <div class="preview-grid" id="previewGrid"></div>
       </div>
     </div>
   </div>
 
+</div>
+
+<div class="statusbar">
+  <span>X <b id="statX">&mdash;</b></span>
+  <span>Y <b id="statY">&mdash;</b></span>
+  <span>Size <b id="statSize">&mdash;</b></span>
+  <span>Painted <b id="statPainted">0</b></span>
+  <span class="statusbar-spacer"></span>
+  <span>Tool <b id="statTool">Pen</b></span>
+  <span>Zoom <b id="statZoom">10&times;</b></span>
 </div>
 
 <footer>
@@ -452,6 +568,19 @@ function setCell(x, y, roleId) {
   if (mirrorOn) {
     const mx = gridW - 1 - x;
     if (inBounds(mx, y)) grid[idx(mx, y)] = roleId;
+  }
+}
+
+// Brush size — Pen and Erase paint a size×size block centered on the
+// cursor instead of a single cell, same idea as a real painting app's
+// brush radius. Built on setCell() so mirror mode still applies per cell.
+let brushSize = 1;
+function paintBrush(cx, cy, roleId) {
+  const half = Math.floor((brushSize - 1) / 2);
+  for (let dy = 0; dy < brushSize; dy++) {
+    for (let dx = 0; dx < brushSize; dx++) {
+      setCell(cx - half + dx, cy - half + dy, roleId);
+    }
   }
 }
 function lineCells(x0, y0, x1, y1) {
@@ -671,8 +800,8 @@ canvas.addEventListener('pointerdown', (e) => {
   strokeStart = { x, y };
   strokeSnapshot = grid.slice();
 
-  if (activeTool === 'pen') { pushHistory(); setCell(x, y, activeRole); renderEditorCanvas(); }
-  else if (activeTool === 'erase') { pushHistory(); setCell(x, y, null); renderEditorCanvas(); }
+  if (activeTool === 'pen') { pushHistory(); paintBrush(x, y, activeRole); renderEditorCanvas(); }
+  else if (activeTool === 'erase') { pushHistory(); paintBrush(x, y, null); renderEditorCanvas(); }
   else if (activeTool === 'fill') { pushHistory(); floodFill(x, y, activeRole); renderAll(); }
   else if (activeTool === 'eyedrop') {
     const picked = grid[idx(x, y)];
@@ -688,8 +817,8 @@ canvas.addEventListener('pointermove', (e) => {
   if (inBounds(x, y)) { $('statX').textContent = x; $('statY').textContent = y; }
   if (!isDrawing) return;
 
-  if (activeTool === 'pen') { setCell(x, y, activeRole); renderEditorCanvas(); }
-  else if (activeTool === 'erase') { setCell(x, y, null); renderEditorCanvas(); }
+  if (activeTool === 'pen') { paintBrush(x, y, activeRole); renderEditorCanvas(); }
+  else if (activeTool === 'erase') { paintBrush(x, y, null); renderEditorCanvas(); }
   else if (activeTool === 'line' || activeTool === 'rect') {
     grid = strokeSnapshot.slice();
     const pts = activeTool === 'line' ? lineCells(strokeStart.x, strokeStart.y, x, y) : rectCells(strokeStart.x, strokeStart.y, x, y);
@@ -711,10 +840,25 @@ window.addEventListener('pointerup', endStroke);
 /* =========================================================================
    Toolbar / config wiring
    ========================================================================= */
+const TOOL_LABELS = { pen: 'Pen', line: 'Line', rect: 'Rect', fill: 'Fill', eyedrop: 'Pick', erase: 'Erase' };
+function updateToolOptionsLabel() {
+  const showsBrush = activeTool === 'pen' || activeTool === 'erase';
+  $('toolOptionsLabel').textContent = showsBrush ? `Brush Size — ${TOOL_LABELS[activeTool]}` : `Brush Size (Pen/Erase only)`;
+  document.querySelectorAll('.brush-size-row button').forEach((b) => { b.disabled = !showsBrush; b.style.opacity = showsBrush ? 1 : .4; });
+}
 document.querySelectorAll('.tool-btn[data-tool]').forEach((btn) => {
   btn.addEventListener('click', () => {
     activeTool = btn.dataset.tool;
     document.querySelectorAll('.tool-btn[data-tool]').forEach((b) => b.classList.remove('is-on'));
+    btn.classList.add('is-on');
+    $('statTool').textContent = TOOL_LABELS[activeTool] || activeTool;
+    updateToolOptionsLabel();
+  });
+});
+document.querySelectorAll('.brush-size-row button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    brushSize = parseInt(btn.dataset.brush);
+    document.querySelectorAll('.brush-size-row button').forEach((b) => b.classList.remove('is-on'));
     btn.classList.add('is-on');
   });
 });
@@ -723,6 +867,7 @@ document.querySelectorAll('.zoom-row button').forEach((btn) => {
     zoom = parseInt(btn.dataset.zoom);
     document.querySelectorAll('.zoom-row button').forEach((b) => b.classList.remove('is-on'));
     btn.classList.add('is-on');
+    $('statZoom').textContent = zoom + '×';
     renderEditorCanvas();
   });
 });
@@ -775,9 +920,51 @@ window.addEventListener('keydown', (e) => {
   if (map[e.key.toLowerCase()]) {
     activeTool = map[e.key.toLowerCase()];
     document.querySelectorAll('.tool-btn[data-tool]').forEach((b) => b.classList.toggle('is-on', b.dataset.tool === activeTool));
+    $('statTool').textContent = TOOL_LABELS[activeTool] || activeTool;
+    updateToolOptionsLabel();
   }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); }
   if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z'))) { e.preventDefault(); redo(); }
+});
+
+/* ---- docker collapse toggles ---- */
+document.querySelectorAll('.docker-toggle').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const panel = btn.closest('.panel');
+    const collapsed = panel.classList.toggle('collapsed');
+    btn.innerHTML = collapsed ? '&#9656;' : '&#9662;';
+  });
+});
+
+/* ---- menu bar — File/Edit/View/Help. Each item just triggers the same
+   function or element the toolbar/keyboard already use. ---- */
+document.querySelectorAll('.menu-trigger').forEach((trigger) => {
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const menu = trigger.closest('.menu');
+    const wasOpen = menu.classList.contains('is-open');
+    document.querySelectorAll('.menu.is-open').forEach((m) => m.classList.remove('is-open'));
+    if (!wasOpen) menu.classList.add('is-open');
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.menu.is-open').forEach((m) => m.classList.remove('is-open'));
+});
+document.querySelectorAll('.menu-dropdown [data-action]').forEach((item) => {
+  item.addEventListener('click', () => {
+    const action = item.dataset.action;
+    const zoomMatch = action.match(/^zoom(\d+)$/);
+    if (action === 'import') $('importInput').click();
+    else if (action === 'exportJson') $('exportJsonBtn').click();
+    else if (action === 'exportPng') $('exportPngBtn').click();
+    else if (action === 'undo') undo();
+    else if (action === 'redo') redo();
+    else if (action === 'random') applyRandomBuilding();
+    else if (action === 'clear') $('clearBtn').click();
+    else if (action === 'toggleGrid') $('gridToggle').click();
+    else if (action === 'toggleMirror') $('mirrorToggle').click();
+    else if (zoomMatch) document.querySelector(`.zoom-row button[data-zoom="${zoomMatch[1]}"]`).click();
+  });
 });
 
 /* =========================================================================
@@ -1041,6 +1228,8 @@ if (window.innerWidth < 760) {
   zoom = 6;
   document.querySelectorAll('.zoom-row button').forEach((b) => b.classList.toggle('is-on', b.dataset.zoom === '6'));
 }
+$('statZoom').textContent = zoom + '×';
+updateToolOptionsLabel();
 $('bandStartIn').max = gridH; $('bandEndIn').max = gridH;
 buildRolePalette();
 buildPreviewGrid();
