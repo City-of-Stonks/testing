@@ -2,21 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Building Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
   /* Palette pulled directly from cityofstonks.com/city.css's own :root
-     tokens (--bg, --panel, --border, --border-strong, --accent, --text,
-     --text-muted, --danger) — this isn't a "themed to look similar" guess,
-     it's the actual hex values, so the tool sits next to the real site
-     without a seam. Their whole site is set in a system monospace stack
-     (no separate display font), so this matches that instead of pairing in
-     an unrelated sans.
+     tokens — real hex values, not a re-guess — so this app-shell sits next
+     to the real site without a seam. Their whole site is set in a system
+     monospace stack (no separate display font); matched here instead of
+     pairing in an unrelated sans.
   */
   :root{
-    --bg:#060806; --panel:#0C0F0A; --panel-alt:#0A0D08;
+    --bg:#060806; --panel:#0C0F0A; --panel-alt:#0A0D08; --panel-raised:#10140C;
     --border:#1F2A16; --border-strong:#7D9B14;
     --accent:#CCFF00; --accent-ink:#0B1400;
     --text:#D7E2CC; --text-muted:#93A187; --text-faint:#5F6B57;
@@ -24,165 +22,36 @@
     --font-mono:ui-monospace,'SF Mono',Menlo,'IBM Plex Mono',monospace;
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-mono);}
+  html,body{height:100%;overscroll-behavior:none;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-mono);overflow:hidden;}
   ::selection{background:var(--accent);color:var(--accent-ink);}
   button, select, input, textarea{font-family:inherit;}
+  button{-webkit-tap-highlight-color:transparent;}
 
-  .bp-grid{
-    position:fixed;inset:0;z-index:-1;
-    background-image:linear-gradient(rgba(125,155,20,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(125,155,20,.10) 1px, transparent 1px);
-    background-size:28px 28px;
-    background-color:var(--bg);
+  /* =======================================================================
+     App shell — the whole point of the rebuild. Fixed to the viewport, no
+     page scroll: a menu bar, a titlebar, a workspace row that fills every
+     remaining pixel, and a status bar, the way a real desktop image editor
+     is laid out. Only individual panel *bodies* scroll internally.
+     ======================================================================= */
+  .app-shell{
+    height:100dvh; height:100vh; display:flex; flex-direction:column; min-height:0;
   }
 
-  header{padding:1.6rem 1.2rem 1rem;text-align:center;}
-  .kicker{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);}
-  h1{font-weight:700;font-size:clamp(1.5rem,4vw,2.1rem);margin:.5rem 0 .5rem;color:var(--text);letter-spacing:.03em;}
-  header p{color:var(--text-muted);font-size:.86rem;max-width:56ch;margin:0 auto;line-height:1.6;}
-  header p b{color:var(--accent);font-weight:600;}
-
-  .app{max-width:1400px;margin:0 auto;padding:1rem 1rem 3rem;display:grid;grid-template-columns:220px minmax(0,1fr) 300px;gap:1rem;align-items:start;}
-  @media (max-width:1180px){ .app{grid-template-columns:200px minmax(0,1fr);} .previewCol{grid-column:1/-1;order:3;} }
-  @media (max-width:760px){
-    .app{grid-template-columns:1fr;padding:.7rem .7rem 2.5rem;gap:.8rem;}
-    .toolCol{order:2;} .canvasCol{order:1;} .previewCol{order:3;grid-column:1;}
-  }
-
-  .panel{background:var(--panel);border:1px solid var(--border);border-radius:4px;}
-  .panel-title{
-    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
-    padding:.6rem .8rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;
-  }
-  .panel-body{padding:.8rem;}
-  .panel + .panel{margin-top:.9rem;}
-
-  /* ---- toolbar ---- */
-  .tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;}
-  @media (max-width:760px){ .tool-grid{grid-template-columns:repeat(6,1fr);} }
-  .tool-btn{
-    background:var(--panel-alt);border:1px solid var(--border);color:var(--text);padding:.55rem .3rem;
-    font-size:.68rem;cursor:pointer;border-radius:3px;display:flex;flex-direction:column;align-items:center;gap:.25rem;
-    min-height:44px;justify-content:center;
-  }
-  .tool-btn .ic{font-size:1.1rem;}
-  .tool-btn:hover{border-color:var(--accent);}
-  .tool-btn.is-on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700;}
-  .tool-row{display:flex;gap:.4rem;margin-top:.5rem;}
-  .tool-row .tool-btn{flex:1;}
-
-  .zoom-row{display:flex;gap:.3rem;margin-top:.6rem;}
-  .zoom-row button{
-    flex:1;background:var(--panel-alt);border:1px solid var(--border);color:var(--text-muted);padding:.5rem .35rem;
-    font-size:.72rem;cursor:pointer;min-height:40px;border-radius:3px;
-  }
-  .zoom-row button.is-on{border-color:var(--border-strong);color:var(--accent);background:rgba(204,255,0,.08);}
-
-  .mirror-toggle{display:flex;align-items:center;gap:.5rem;font-size:.76rem;color:var(--text-muted);cursor:pointer;margin-top:.7rem;min-height:28px;}
-  .mirror-toggle input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0;}
-
-  /* ---- role palette ---- */
-  .role-cat{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:.7rem 0 .35rem;}
-  .role-cat:first-child{margin-top:0;}
-  .role-palette-grid{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;}
-  .role-swatch{
-    display:flex;align-items:center;gap:.45rem;width:100%;background:var(--panel-alt);border:1px solid var(--border);
-    padding:.4rem .5rem;cursor:pointer;border-radius:3px;color:var(--text);font-size:.72rem;text-align:left;min-height:40px;
-  }
-  .role-swatch:hover{border-color:var(--border-strong);}
-  .role-swatch.is-on{border-color:var(--accent);background:rgba(204,255,0,.08);}
-  .role-chip{width:15px;height:15px;border-radius:2px;flex-shrink:0;border:1px solid rgba(255,255,255,.25);}
-  .role-swatch span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-
-  /* ---- canvas area ---- */
-  .canvas-toolbar{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.6rem .8rem;border-bottom:1px solid var(--border);}
-  .canvas-stats{font-size:.68rem;color:var(--text-muted);display:flex;gap:.8rem;flex-wrap:wrap;}
-  .canvas-stats b{color:var(--accent);}
-  .canvas-scroll{overflow:auto;max-height:70vh;padding:1rem;display:flex;justify-content:center;background:repeating-conic-gradient(#080B07 0% 25%, #0A0D08 0% 50%) 0 0/16px 16px;}
-  @media (max-width:760px){ .canvas-scroll{max-height:56vh;padding:.6rem;} }
-  #editorCanvas{display:block;image-rendering:pixelated;cursor:crosshair;touch-action:none;}
-
-  /* ---- config fields ---- */
-  .field-label{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.35rem;}
-  .field-row{display:flex;gap:.5rem;margin-bottom:.7rem;}
-  .field-row > div{flex:1;}
-  input[type=number], input[type=text], textarea{
-    width:100%;background:var(--panel-alt);border:1px solid var(--border);color:var(--text);padding:.5rem .5rem;
-    font-size:.85rem;border-radius:3px;min-height:40px;
-  }
-  input[type=number]:focus, input[type=text]:focus, textarea:focus, input[type=range]:focus{outline:2px solid var(--accent);outline-offset:1px;}
-  textarea{resize:vertical;min-height:60px;font-family:var(--font-mono);}
-  input[type=range]{width:100%;accent-color:var(--accent);min-height:28px;}
-
-  .band-visual{position:relative;height:14px;background:var(--panel-alt);border:1px solid var(--border);border-radius:3px;margin-top:.4rem;overflow:hidden;}
-  .band-visual .band-fill{position:absolute;top:0;bottom:0;background:rgba(204,255,0,.28);border-left:1px solid var(--accent);border-right:1px solid var(--accent);}
-
-  .checkbox-row{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text);margin-bottom:.7rem;cursor:pointer;min-height:28px;}
-  .checkbox-row input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0;}
-
-  .btn{
-    width:100%;background:var(--accent);color:var(--accent-ink);border:none;padding:.65rem;
-    font-weight:700;font-size:.76rem;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;border-radius:3px;margin-top:.4rem;
-    min-height:44px;
-  }
-  .btn:hover{background:#DFFF66;}
-  .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-muted);}
-  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
-  .btn.danger{background:transparent;border:1px solid var(--danger);color:var(--danger);}
-  .btn.danger:hover{background:var(--danger);color:#fff;}
-
-  /* ---- preview grid ---- */
-  .preview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;}
-  @media (max-width:1180px) and (min-width:761px){ .preview-grid{grid-template-columns:repeat(3,1fr);} }
-  @media (max-width:420px){ .preview-grid{grid-template-columns:1fr;} }
-  .preview-card{background:var(--panel-alt);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
-  .preview-card .pc-title{font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:.4rem .5rem;border-bottom:1px solid var(--border);}
-  .preview-card .pc-canvas-wrap{height:180px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
-  .preview-card canvas{image-rendering:pixelated;}
-  .preview-card .pc-meta{font-size:.6rem;color:var(--text-muted);padding:.35rem .5rem;border-top:1px solid var(--border);}
-
-  .hint{font-size:.72rem;color:var(--text-muted);line-height:1.55;margin-top:.5rem;}
-  .hint b{color:var(--accent);}
-
-  kbd{background:var(--panel-alt);border:1px solid var(--border);border-radius:3px;padding:.05em .4em;font-size:.85em;}
-
-  footer{max-width:1400px;margin:0 auto;padding:1rem 1.2rem 2rem;color:var(--text-faint);font-size:.68rem;line-height:1.7;text-align:center;}
-
-  /* ---- top app bar ---- */
-  .topbar{
-    position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border);
-    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-    padding:.7rem 1.2rem;
-  }
-  .topbar-title{display:flex;align-items:baseline;gap:.5rem;}
-  .topbar-title .kicker{display:block;font-size:.6rem;letter-spacing:.2em;}
-  .topbar-title h1{font-size:1.15rem;margin:0;letter-spacing:.02em;display:flex;align-items:center;gap:.5rem;}
-  .topbar-actions{display:flex;gap:.5rem;flex-wrap:wrap;}
-  .topbar-actions .btn, .topbar-actions .file-btn{width:auto;margin:0;padding:.55rem .9rem;min-height:40px;}
-  .file-btn{
-    display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border);
-    color:var(--text-muted);font-weight:700;font-size:.76rem;letter-spacing:.03em;text-transform:uppercase;
-    cursor:pointer;border-radius:3px;
-  }
-  .file-btn:hover{border-color:var(--accent);color:var(--accent);}
-  @media (max-width:760px){ .topbar{padding:.6rem .7rem;} .topbar-title h1{font-size:1rem;} }
-
-  /* ---- menu bar — File/Edit/View/Help, the thing that most says "real
-     creative application" at a glance. Every item here just calls the same
-     functions the toolbar buttons and keyboard shortcuts already do; it's
-     a second way in, not new behavior. ---- */
+  /* ---- menu bar ---- */
   .menubar{
-    display:flex;background:var(--panel-alt);border-bottom:1px solid var(--border);
-    padding:0 .5rem;position:sticky;top:0;z-index:11;
+    display:flex; flex-shrink:0; background:var(--panel-alt); border-bottom:1px solid var(--border);
+    padding:0 .3rem;
   }
   .menu{position:relative;}
   .menu-trigger{
-    background:transparent;border:none;color:var(--text-muted);padding:.45rem .8rem;
-    font-size:.76rem;cursor:pointer;font-family:inherit;
+    background:transparent;border:none;color:var(--text-muted);padding:.42rem .75rem;
+    font-size:.74rem;cursor:pointer;font-family:inherit;
   }
   .menu-trigger:hover, .menu.is-open .menu-trigger{background:var(--border);color:var(--text);}
   .menu-dropdown{
     display:none;position:absolute;top:100%;left:0;background:var(--panel);border:1px solid var(--border-strong);
-    min-width:210px;z-index:50;box-shadow:0 12px 28px rgba(0,0,0,.55);flex-direction:column;padding:.3rem;
+    min-width:210px;z-index:80;box-shadow:0 12px 28px rgba(0,0,0,.55);flex-direction:column;padding:.3rem;
   }
   .menu.is-open .menu-dropdown{display:flex;}
   .menu-dropdown button{
@@ -191,244 +60,361 @@
     font-family:inherit;width:100%;
   }
   .menu-dropdown button:hover{background:rgba(204,255,0,.1);color:var(--accent);}
-  .menu-dropdown kbd{font-size:.68rem;}
+  .menu-dropdown kbd{background:var(--panel-alt);border:1px solid var(--border);border-radius:3px;padding:.05em .4em;font-size:.68rem;}
   .menu-info{padding:.5rem .6rem;font-size:.7rem;color:var(--text-muted);line-height:1.55;max-width:260px;}
   .menu-divider{border:none;border-top:1px solid var(--border);margin:.25rem 0;}
 
-  /* ---- dockers — every side panel gets a collapse toggle, Krita-style.
-     Collapsing is real (hides panel-body), not decorative. ---- */
-  .docker-toggle{
-    background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:.6rem;padding:.1rem .3rem;
-    margin-left:auto;font-family:inherit;
+  /* ---- titlebar ---- */
+  .titlebar{
+    display:flex; align-items:center; justify-content:space-between; gap:.6rem; flex-shrink:0;
+    padding:.45rem .7rem; border-bottom:1px solid var(--border); background:var(--bg);
   }
-  .docker-toggle:hover{color:var(--accent);}
-  .panel.collapsed .panel-body{display:none;}
-  .panel-title{gap:.4rem;}
+  .titlebar-id{display:flex; align-items:baseline; gap:.5rem; min-width:0;}
+  .titlebar .kicker{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap;}
+  .titlebar h1{font-size:1rem;margin:0;letter-spacing:.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .titlebar-actions{display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+  .icon-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:transparent;border:1px solid var(--border);
+    color:var(--text-muted);cursor:pointer;border-radius:3px;font-family:inherit;font-size:.7rem;
+    min-width:36px;min-height:36px;padding:.3rem .5rem;
+  }
+  .icon-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .icon-btn .ic{font-size:1rem;line-height:1;}
+  #panelsToggleBtn{display:none;}
 
-  /* ---- status bar — replaces the old inline canvas stats with a proper
-     bottom bar (cursor position, canvas size, painted count, current tool,
-     current zoom), sticky to the viewport bottom. ---- */
+  /* ---- workspace: the three-pane app body ---- */
+  .workspace{display:flex;flex:1;min-height:0;position:relative;}
+
+  /* ---- left toolbox — icon-only vertical strip, always visible, the
+     "grab a tool" muscle-memory column every image editor has. ---- */
+  .toolbox{
+    width:56px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);
+    display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:.5rem .35rem;
+    overflow-y:auto;
+  }
+  .toolbox-divider{width:70%;height:1px;background:var(--border);margin:.3rem 0;flex-shrink:0;}
+  .tool-btn{
+    width:44px;height:40px;background:var(--panel-alt);border:1px solid var(--border);color:var(--text);
+    cursor:pointer;border-radius:4px;display:flex;align-items:center;justify-content:center;
+    font-size:1.05rem;flex-shrink:0;position:relative;
+  }
+  .tool-btn .ic{pointer-events:none;}
+  .tool-btn:hover{border-color:var(--accent);}
+  .tool-btn.is-on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+  .zoom-mini{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;width:44px;}
+  .zoom-mini button{
+    background:var(--panel-alt);border:1px solid var(--border);color:var(--text-muted);border-radius:3px;
+    font-size:.6rem;padding:.35rem 0;cursor:pointer;min-height:26px;
+  }
+  .zoom-mini button.is-on{border-color:var(--border-strong);color:var(--accent);background:rgba(204,255,0,.08);}
+
+  /* ---- center: canvas sub-toolbar + viewport ---- */
+  .canvas-col{flex:1;min-width:0;display:flex;flex-direction:column;min-height:0;}
+  .canvas-toolbar{
+    display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.45rem .7rem;
+    border-bottom:1px solid var(--border);background:var(--panel-alt);flex-shrink:0;
+  }
+  .brush-size-row{display:flex;gap:.3rem;}
+  .brush-size-row button{
+    background:var(--panel-raised);border:1px solid var(--border);color:var(--text-muted);padding:.3rem .55rem;
+    font-size:.68rem;cursor:pointer;min-height:32px;border-radius:3px;font-family:inherit;
+  }
+  .brush-size-row button.is-on{border-color:var(--border-strong);color:var(--accent);background:rgba(204,255,0,.08);}
+  .toolbar-spacer{flex:1;min-width:.4rem;}
+  .btn{
+    background:var(--accent);color:var(--accent-ink);border:none;padding:.5rem .8rem;
+    font-weight:700;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;border-radius:3px;
+    min-height:36px;white-space:nowrap;
+  }
+  .btn:hover{background:#DFFF66;}
+  .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-muted);}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .btn.danger{background:transparent;border:1px solid var(--danger);color:var(--danger);}
+  .btn.danger:hover{background:var(--danger);color:#fff;}
+  .btn.full{width:100%;margin-top:.5rem;padding:.65rem;min-height:44px;}
+
+  .canvas-viewport{
+    flex:1;min-height:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:2.5rem;
+    background:repeating-conic-gradient(#080B07 0% 25%, #0A0D08 0% 50%) 0 0/16px 16px;
+  }
+  #editorCanvas{display:block;image-rendering:pixelated;cursor:crosshair;touch-action:none;flex-shrink:0;box-shadow:0 0 0 1px var(--border-strong);}
+
+  /* ---- right dock — tabbed, so every property panel lives in one fixed-
+     size column instead of stacking the page taller. ---- */
+  .dock{
+    width:300px;flex-shrink:0;background:var(--panel);border-left:1px solid var(--border);
+    display:flex;flex-direction:column;min-height:0;min-width:0;
+  }
+  .dock-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;}
+  .dock-tabs button{
+    flex:1;background:var(--panel-alt);border:none;border-right:1px solid var(--border);color:var(--text-muted);
+    padding:.55rem .3rem;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;
+  }
+  .dock-tabs button:last-child{border-right:none;}
+  .dock-tabs button.is-on{background:var(--panel);color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent);}
+  .dock-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;}
+  .dock-panel{display:none;padding:.85rem;min-width:0;}
+  .dock-panel.is-on{display:block;}
+
+  .role-cat{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:.7rem 0 .35rem;}
+  .role-cat:first-child{margin-top:0;}
+  .role-palette-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.3rem;}
+  .role-swatch{
+    display:flex;align-items:center;gap:.45rem;width:100%;min-width:0;background:var(--panel-alt);border:1px solid var(--border);
+    padding:.4rem .5rem;cursor:pointer;border-radius:3px;color:var(--text);font-size:.72rem;text-align:left;min-height:40px;
+  }
+  .role-swatch:hover{border-color:var(--border-strong);}
+  .role-swatch.is-on{border-color:var(--accent);background:rgba(204,255,0,.08);}
+  .role-chip{width:15px;height:15px;border-radius:2px;flex-shrink:0;border:1px solid rgba(255,255,255,.25);}
+  .role-swatch span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1;}
+
+  .field-label{font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:.35rem;margin-bottom:.35rem;}
+  .field-row{display:flex;gap:.5rem;margin-bottom:.7rem;}
+  .field-row > div{flex:1;min-width:0;}
+  input[type=number], input[type=text], textarea{
+    width:100%;background:var(--panel-alt);border:1px solid var(--border);color:var(--text);padding:.5rem .5rem;
+    font-size:.85rem;border-radius:3px;min-height:38px;
+  }
+  input[type=number]:focus, input[type=text]:focus, textarea:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  textarea{resize:vertical;min-height:60px;font-family:var(--font-mono);}
+
+  .band-visual{position:relative;height:14px;background:var(--panel-alt);border:1px solid var(--border);border-radius:3px;margin-top:.4rem;overflow:hidden;}
+  .band-visual .band-fill{position:absolute;top:0;bottom:0;background:rgba(204,255,0,.28);border-left:1px solid var(--accent);border-right:1px solid var(--accent);}
+  .section-title{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:1.1rem 0 .5rem;display:flex;align-items:center;gap:.35rem;}
+  .section-title:first-child{margin-top:0;}
+
+  .checkbox-row{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text);margin-bottom:.4rem;cursor:pointer;min-height:28px;}
+  .checkbox-row input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0;}
+
+  .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+  .preview-card{background:var(--panel-alt);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+  .preview-card .pc-title{font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);padding:.35rem .45rem;border-bottom:1px solid var(--border);}
+  .preview-card .pc-canvas-wrap{height:140px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
+  .preview-card canvas{image-rendering:pixelated;}
+  .preview-card .pc-meta{font-size:.58rem;color:var(--text-muted);padding:.3rem .45rem;border-top:1px solid var(--border);}
+
+  /* ---- status bar ---- */
   .statusbar{
-    position:sticky;bottom:0;z-index:9;background:var(--panel-alt);border-top:1px solid var(--border);
-    display:flex;gap:1.1rem;padding:.4rem .9rem;font-size:.68rem;color:var(--text-muted);flex-wrap:wrap;
+    display:flex;flex-shrink:0;gap:1rem;padding:.35rem .8rem;font-size:.66rem;color:var(--text-muted);
+    background:var(--panel-alt);border-top:1px solid var(--border);flex-wrap:wrap;
   }
   .statusbar b{color:var(--accent);}
   .statusbar-spacer{flex:1;min-width:.5rem;}
-  @media (max-width:600px){ .statusbar{gap:.6rem .9rem;} }
 
-  /* ---- tool options docker — contextual, changes with the active tool,
-     same idea as Krita's own Tool Options panel. ---- */
-  .brush-size-row{display:flex;gap:.35rem;}
-  .brush-size-row button{
-    flex:1;background:var(--panel-alt);border:1px solid var(--border);color:var(--text-muted);padding:.5rem .3rem;
-    font-size:.72rem;cursor:pointer;min-height:40px;border-radius:3px;font-family:inherit;
-  }
-  .brush-size-row button.is-on{border-color:var(--border-strong);color:var(--accent);background:rgba(204,255,0,.08);}
-
-  /* ---- tooltips — replace the old always-on paragraph hints. Click-to-
-     toggle (via .is-open) covers touch devices where :hover never fires;
-     hover/focus still work for mouse and keyboard. ---- */
+  /* ---- tooltips ---- */
   .tt{
-    display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;
-    background:var(--panel-alt);border:1px solid var(--border);color:var(--text-muted);font-size:.64rem;font-weight:700;
+    display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;
+    background:var(--panel-alt);border:1px solid var(--border);color:var(--text-muted);font-size:.62rem;font-weight:700;
     cursor:help;position:relative;flex-shrink:0;user-select:none;
   }
   .tt:hover, .tt:focus-visible, .tt.is-open{border-color:var(--accent);color:var(--accent);outline:none;}
   .tt::after{
-    content:attr(data-tooltip);position:absolute;left:0;top:calc(100% + 8px);transform:none;
-    width:max-content;max-width:240px;background:var(--panel);border:1px solid var(--border-strong);
-    color:var(--text);font-size:.7rem;line-height:1.5;padding:.55rem .65rem;border-radius:4px;
-    opacity:0;pointer-events:none;transition:opacity .12s;z-index:30;text-align:left;font-weight:400;
+    content:attr(data-tooltip);position:absolute;left:0;top:calc(100% + 8px);
+    width:max-content;max-width:220px;background:var(--panel);border:1px solid var(--border-strong);
+    color:var(--text);font-size:.68rem;line-height:1.5;padding:.5rem .6rem;border-radius:4px;
+    opacity:0;pointer-events:none;transition:opacity .12s;z-index:60;text-align:left;font-weight:400;
     box-shadow:0 10px 24px rgba(0,0,0,.5);
   }
-  .panel-title .tt::after{left:auto;right:0;}
   .tt:hover::after, .tt:focus-visible::after, .tt.is-open::after{opacity:1;}
+
+  /* =======================================================================
+     Mobile — the right dock becomes a slide-in sheet (Photoshop/Procreate-
+     style "panels" drawer) instead of a fixed 300px column, since a 56px
+     toolbox + 300px dock leaves almost nothing for the canvas on a phone.
+     The toolbox stays put: it's the one thing you reach for constantly.
+     ======================================================================= */
+  .dock-backdrop{display:none;}
+  @media (max-width:860px){
+    #panelsToggleBtn{display:inline-flex;}
+    .titlebar h1{font-size:.92rem;}
+    .toolbox{width:50px;}
+    .tool-btn{width:40px;height:38px;font-size:.95rem;}
+    .zoom-mini{width:40px;}
+    .dock{
+      position:fixed;top:0;bottom:0;right:0;width:86vw;max-width:340px;z-index:70;
+      transform:translateX(100%);transition:transform .22s ease;box-shadow:-12px 0 30px rgba(0,0,0,.5);
+    }
+    .dock.is-open{transform:translateX(0);}
+    .dock-backdrop{
+      display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:65;
+    }
+    .dock-backdrop.is-on{display:block;}
+    .canvas-viewport{padding:1rem;}
+    .canvas-toolbar{gap:.4rem;padding:.4rem .5rem;}
+    .btn{padding:.45rem .6rem;font-size:.64rem;}
+    .statusbar{font-size:.62rem;gap:.6rem .9rem;}
+    .titlebar-actions .icon-btn span.lbl{display:none;}
+  }
+  @media (max-width:420px){
+    .preview-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
-<div class="bp-grid"></div>
 
-<nav class="menubar" id="menubar">
-  <div class="menu" data-menu="file">
-    <button class="menu-trigger" type="button">File</button>
-    <div class="menu-dropdown">
-      <button type="button" data-action="import">Import .json&hellip;</button>
-      <button type="button" data-action="exportJson">Export .json</button>
-      <button type="button" data-action="exportPng">Export .png</button>
-    </div>
-  </div>
-  <div class="menu" data-menu="edit">
-    <button class="menu-trigger" type="button">Edit</button>
-    <div class="menu-dropdown">
-      <button type="button" data-action="undo">Undo <kbd>Ctrl+Z</kbd></button>
-      <button type="button" data-action="redo">Redo <kbd>Ctrl+Y</kbd></button>
-      <hr class="menu-divider">
-      <button type="button" data-action="random">Random Building</button>
-      <button type="button" data-action="clear">Clear Canvas</button>
-    </div>
-  </div>
-  <div class="menu" data-menu="view">
-    <button class="menu-trigger" type="button">View</button>
-    <div class="menu-dropdown">
-      <button type="button" data-action="zoom6">Zoom 6&times;</button>
-      <button type="button" data-action="zoom10">Zoom 10&times;</button>
-      <button type="button" data-action="zoom16">Zoom 16&times;</button>
-      <button type="button" data-action="zoom24">Zoom 24&times;</button>
-      <hr class="menu-divider">
-      <button type="button" data-action="toggleGrid">Toggle Grid Lines</button>
-      <button type="button" data-action="toggleMirror">Toggle Mirror Mode</button>
-    </div>
-  </div>
-  <div class="menu" data-menu="help">
-    <button class="menu-trigger" type="button">Help</button>
-    <div class="menu-dropdown">
-      <div class="menu-info"><b style="color:var(--text);">Shortcuts</b><br>B pen &middot; L line &middot; R rect &middot; F fill &middot; I pick &middot; E erase<br>Ctrl+Z / Ctrl+Y undo / redo</div>
-      <hr class="menu-divider">
-      <div class="menu-info">Paint roles, not colors — every cell you place is an abstract building part that City of Stonks recolors per city context and stretches to fit whatever height a wallet needs.</div>
-    </div>
-  </div>
-</nav>
+<div class="app-shell">
 
-<header class="topbar">
-  <div class="topbar-title">
-    <div>
+  <nav class="menubar" id="menubar">
+    <div class="menu" data-menu="file">
+      <button class="menu-trigger" type="button">File</button>
+      <div class="menu-dropdown">
+        <button type="button" data-action="import">Import .json&hellip;</button>
+        <button type="button" data-action="exportJson">Export .json</button>
+        <button type="button" data-action="exportPng">Export .png</button>
+      </div>
+    </div>
+    <div class="menu" data-menu="edit">
+      <button class="menu-trigger" type="button">Edit</button>
+      <div class="menu-dropdown">
+        <button type="button" data-action="undo">Undo <kbd>Ctrl+Z</kbd></button>
+        <button type="button" data-action="redo">Redo <kbd>Ctrl+Y</kbd></button>
+        <hr class="menu-divider">
+        <button type="button" data-action="random">Random Building</button>
+        <button type="button" data-action="clear">Clear Canvas</button>
+      </div>
+    </div>
+    <div class="menu" data-menu="view">
+      <button class="menu-trigger" type="button">View</button>
+      <div class="menu-dropdown">
+        <button type="button" data-action="zoom6">Zoom 6&times;</button>
+        <button type="button" data-action="zoom10">Zoom 10&times;</button>
+        <button type="button" data-action="zoom16">Zoom 16&times;</button>
+        <button type="button" data-action="zoom24">Zoom 24&times;</button>
+        <hr class="menu-divider">
+        <button type="button" data-action="toggleGrid">Toggle Grid Lines</button>
+        <button type="button" data-action="toggleMirror">Toggle Mirror Mode</button>
+        <hr class="menu-divider">
+        <button type="button" data-action="togglePanels">Toggle Panels (mobile)</button>
+      </div>
+    </div>
+    <div class="menu" data-menu="help">
+      <button class="menu-trigger" type="button">Help</button>
+      <div class="menu-dropdown">
+        <div class="menu-info"><b style="color:var(--text);">Shortcuts</b><br>B pen &middot; L line &middot; R rect &middot; F fill &middot; I pick &middot; E erase<br>Ctrl+Z / Ctrl+Y undo / redo</div>
+        <hr class="menu-divider">
+        <div class="menu-info">Paint roles, not colors — every cell you place is an abstract building part that City of Stonks recolors per city context and stretches to fit whatever height a wallet needs.</div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="titlebar">
+    <div class="titlebar-id">
       <span class="kicker">City of Stonks</span>
       <h1>Building Designer</h1>
     </div>
-  </div>
-  <div class="topbar-actions">
-    <label class="file-btn">&uarr; Import .json<input type="file" id="importInput" accept="application/json,.json" hidden></label>
-    <button class="btn ghost" id="exportJsonBtn" style="width:auto;margin:0;">&darr; Export .json</button>
-    <button class="btn" id="exportPngBtn" style="width:auto;margin:0;">&darr; Export .png</button>
-  </div>
-</header>
-
-<div class="app">
-
-  <div class="toolCol">
-    <div class="panel">
-      <div class="panel-title"><span>Tools</span> <span class="tt" tabindex="0" data-tooltip="Shortcuts: B pen · L line · R rect · F fill · I pick · E erase · Ctrl+Z / Ctrl+Y undo/redo">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body">
-        <div class="tool-grid">
-          <button class="tool-btn is-on" data-tool="pen"><span class="ic">&#9998;</span>Pen</button>
-          <button class="tool-btn" data-tool="line"><span class="ic">&#9585;</span>Line</button>
-          <button class="tool-btn" data-tool="rect"><span class="ic">&#9633;</span>Rect</button>
-          <button class="tool-btn" data-tool="fill"><span class="ic">&#9967;</span>Fill</button>
-          <button class="tool-btn" data-tool="eyedrop"><span class="ic">&#128167;</span>Pick</button>
-          <button class="tool-btn" data-tool="erase"><span class="ic">&#9003;</span>Erase</button>
-        </div>
-        <div class="tool-row">
-          <button class="tool-btn" id="undoBtn"><span class="ic">&#8630;</span>Undo</button>
-          <button class="tool-btn" id="redoBtn"><span class="ic">&#8631;</span>Redo</button>
-        </div>
-        <label class="mirror-toggle"><input type="checkbox" id="mirrorToggle"> Mirror (symmetric facade)</label>
-        <label class="mirror-toggle"><input type="checkbox" id="gridToggle" checked> Show grid lines</label>
-        <div class="field-label" style="margin-top:.8rem;">Zoom</div>
-        <div class="zoom-row">
-          <button data-zoom="6">6&times;</button>
-          <button data-zoom="10" class="is-on">10&times;</button>
-          <button data-zoom="16">16&times;</button>
-          <button data-zoom="24">24&times;</button>
-        </div>
-      </div>
+    <div class="titlebar-actions">
+      <label class="icon-btn" title="Import .json"><span class="ic">&uarr;</span><span class="lbl">Import</span><input type="file" id="importInput" accept="application/json,.json" hidden></label>
+      <button class="icon-btn" id="exportJsonBtn" title="Export .json"><span class="ic">&darr;</span><span class="lbl">.json</span></button>
+      <button class="icon-btn" id="exportPngBtn" title="Export .png"><span class="ic">&darr;</span><span class="lbl">.png</span></button>
+      <button class="icon-btn" id="panelsToggleBtn" title="Toggle panels"><span class="ic">&#9776;</span><span class="lbl">Panels</span></button>
     </div>
+  </header>
 
-    <div class="panel">
-      <div class="panel-title"><span>Tool Options</span> <span class="tt" tabindex="0" data-tooltip="Applies to Pen and Erase — paints a size×size block centered on the cursor instead of a single cell.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body">
-        <span class="field-label" id="toolOptionsLabel">Brush Size — Pen</span>
+  <div class="workspace">
+
+    <aside class="toolbox" id="toolbox">
+      <button class="tool-btn is-on" data-tool="pen" title="Pen (B)"><span class="ic">&#9998;</span></button>
+      <button class="tool-btn" data-tool="line" title="Line (L)"><span class="ic">&#9585;</span></button>
+      <button class="tool-btn" data-tool="rect" title="Rectangle (R)"><span class="ic">&#9633;</span></button>
+      <button class="tool-btn" data-tool="fill" title="Fill (F)"><span class="ic">&#9967;</span></button>
+      <button class="tool-btn" data-tool="eyedrop" title="Eyedropper (I)"><span class="ic">&#128167;</span></button>
+      <button class="tool-btn" data-tool="erase" title="Eraser (E)"><span class="ic">&#9003;</span></button>
+      <div class="toolbox-divider"></div>
+      <button class="tool-btn" id="undoBtn" title="Undo (Ctrl+Z)"><span class="ic">&#8630;</span></button>
+      <button class="tool-btn" id="redoBtn" title="Redo (Ctrl+Y)"><span class="ic">&#8631;</span></button>
+      <div class="toolbox-divider"></div>
+      <label class="tool-btn" title="Mirror (symmetric facade)"><input type="checkbox" id="mirrorToggle" hidden><span class="ic">&#8646;</span></label>
+      <label class="tool-btn is-on" title="Show grid lines"><input type="checkbox" id="gridToggle" checked hidden><span class="ic">&#9638;</span></label>
+      <div class="toolbox-divider"></div>
+      <div class="zoom-mini">
+        <button data-zoom="6">6&times;</button>
+        <button data-zoom="10" class="is-on">10&times;</button>
+        <button data-zoom="16">16&times;</button>
+        <button data-zoom="24">24&times;</button>
+      </div>
+    </aside>
+
+    <div class="canvas-col">
+      <div class="canvas-toolbar">
+        <span class="field-label" style="margin:0;">Brush<span class="tt" tabindex="0" data-tooltip="Applies to Pen and Erase — paints a size×size block centered on the cursor.">?</span></span>
         <div class="brush-size-row">
           <button data-brush="1" class="is-on">1px</button>
           <button data-brush="2">2px</button>
           <button data-brush="3">3px</button>
           <button data-brush="4">4px</button>
         </div>
+        <div class="toolbar-spacer"></div>
+        <button class="btn" id="randomBtn" style="background:var(--border-strong);color:#0B1400;">&#127922; Random Building</button>
+        <button class="btn ghost" id="clearBtn">Clear</button>
       </div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-title"><span>Role Palette</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body" id="rolePalette"></div>
-    </div>
-  </div>
-
-  <div class="canvasCol">
-    <div class="panel">
-      <div class="canvas-toolbar">
-        <span class="field-label" style="margin:0;">Canvas</span>
-        <div style="display:flex;gap:.5rem;">
-          <button class="btn" id="randomBtn" style="width:auto;margin:0;padding:.4rem .9rem;background:var(--border-strong);color:#0B1400;">&#127922; Random Building</button>
-          <button class="btn ghost" id="clearBtn" style="width:auto;margin:0;padding:.4rem .8rem;">Clear</button>
-        </div>
-      </div>
-      <div class="canvas-scroll">
+      <div class="canvas-viewport" id="canvasViewport">
         <canvas id="editorCanvas" width="300" height="510"></canvas>
       </div>
     </div>
 
-    <div class="panel">
-      <div class="panel-title"><span>Canvas Dimensions</span> <span class="tt" tabindex="0" data-tooltip="Resizing keeps whatever's already painted, anchored to the top-left corner.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body">
-        <div class="field-row">
-          <div><span class="field-label">Width (cells)</span><input type="number" id="gridWIn" min="20" max="50" value="30"></div>
-          <div><span class="field-label">Height (cells)</span><input type="number" id="gridHIn" min="34" max="127" value="34"></div>
-        </div>
-        <button class="btn ghost" id="resizeBtn">Apply Resize</button>
+    <div class="dock-backdrop" id="dockBackdrop"></div>
+    <aside class="dock" id="dockRight">
+      <div class="dock-tabs">
+        <button type="button" class="is-on" data-tab="roles">Roles</button>
+        <button type="button" data-tab="canvas">Canvas</button>
+        <button type="button" data-tab="preview">Preview</button>
+        <button type="button" data-tab="info">Info</button>
       </div>
-    </div>
+      <div class="dock-body">
 
-    <div class="panel">
-      <div class="panel-title"><span>Repeating Floors</span> <span class="tt" tabindex="0" data-tooltip="Rows above the band render once as the roofline cap. Rows inside the band repeat to fill whatever height a building needs. Rows below render once as the ground floor.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body">
-        <div class="field-row">
-          <div><span class="field-label">Cap ends (row)</span><input type="number" id="bandStartIn" min="0" value="4"></div>
-          <div><span class="field-label">Base starts (row)</span><input type="number" id="bandEndIn" min="1" value="30"></div>
-        </div>
-        <div class="band-visual" id="bandVisual"><div class="band-fill" id="bandFill"></div></div>
-        <div class="field-row" style="margin-top:.8rem;">
-          <div><span class="field-label">Max height (rows, optional)</span><input type="number" id="maxHeightIn" min="0" placeholder="unlimited"></div>
-        </div>
-        <label class="checkbox-row"><input type="checkbox" id="landmarkToggle"> One-off landmark (never repeats site-wide)</label>
-      </div>
-    </div>
+        <div class="dock-panel is-on" data-tab-panel="roles" id="rolePalette"></div>
 
-    <div class="panel">
-      <div class="panel-title"><span>Submission Details</span> <span class="tt" tabindex="0" data-tooltip="This is a local design tool — the Export buttons up top save files to your computer, they don't submit anywhere. Send the exported .json to however City of Stonks actually collects submissions.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body">
-        <span class="field-label">Building name</span>
-        <input type="text" id="nameIn" placeholder="e.g. Ledger Tower" style="margin-bottom:.7rem;">
-        <span class="field-label">Credit</span>
-        <input type="text" id="creditIn" placeholder="your name or handle" style="margin-bottom:.7rem;">
-        <span class="field-label">Notes for reviewers</span>
-        <textarea id="notesIn" placeholder="anything a human reviewer should know"></textarea>
+        <div class="dock-panel" data-tab-panel="canvas">
+          <div class="section-title">Canvas Dimensions <span class="tt" tabindex="0" data-tooltip="Resizing keeps whatever's already painted, anchored to the top-left corner.">?</span></div>
+          <div class="field-row">
+            <div><span class="field-label">Width (cells)</span><input type="number" id="gridWIn" min="20" max="50" value="30"></div>
+            <div><span class="field-label">Height (cells)</span><input type="number" id="gridHIn" min="34" max="127" value="34"></div>
+          </div>
+          <button class="btn ghost full" id="resizeBtn">Apply Resize</button>
+
+          <div class="section-title">Repeating Floors <span class="tt" tabindex="0" data-tooltip="Rows above the band render once as the roofline cap. Rows inside the band repeat to fill whatever height a building needs. Rows below render once as the ground floor.">?</span></div>
+          <div class="field-row">
+            <div><span class="field-label">Cap ends (row)</span><input type="number" id="bandStartIn" min="0" value="4"></div>
+            <div><span class="field-label">Base starts (row)</span><input type="number" id="bandEndIn" min="1" value="30"></div>
+          </div>
+          <div class="band-visual" id="bandVisual"><div class="band-fill" id="bandFill"></div></div>
+          <div class="field-row" style="margin-top:.8rem;">
+            <div><span class="field-label">Max height (rows, optional)</span><input type="number" id="maxHeightIn" min="0" placeholder="unlimited"></div>
+          </div>
+          <label class="checkbox-row"><input type="checkbox" id="landmarkToggle"> One-off landmark (never repeats site-wide)</label>
+        </div>
+
+        <div class="dock-panel" data-tab-panel="preview">
+          <div class="section-title">Live Context Preview <span class="tt" tabindex="0" data-tooltip="The exact same role-map, recolored and restretched per context — this is what &quot;paint roles, not colors&quot; actually buys you.">?</span></div>
+          <div class="preview-grid" id="previewGrid"></div>
+        </div>
+
+        <div class="dock-panel" data-tab-panel="info">
+          <div class="section-title">Submission Details <span class="tt" tabindex="0" data-tooltip="This is a local design tool — Export saves files to your computer, it doesn't submit anywhere. Send the exported .json to however City of Stonks actually collects submissions.">?</span></div>
+          <span class="field-label">Building name</span>
+          <input type="text" id="nameIn" placeholder="e.g. Ledger Tower" style="margin-bottom:.7rem;">
+          <span class="field-label">Credit</span>
+          <input type="text" id="creditIn" placeholder="your name or handle" style="margin-bottom:.7rem;">
+          <span class="field-label">Notes for reviewers</span>
+          <textarea id="notesIn" placeholder="anything a human reviewer should know"></textarea>
+        </div>
+
       </div>
-    </div>
+    </aside>
+
   </div>
 
-  <div class="previewCol">
-    <div class="panel">
-      <div class="panel-title"><span>Live Context Preview</span> <span class="tt" tabindex="0" data-tooltip="The exact same role-map, recolored and restretched per context — this is what &quot;paint roles, not colors&quot; actually buys you.">?</span><button class="docker-toggle" type="button" aria-label="collapse">&#9662;</button></div>
-      <div class="panel-body">
-        <div class="preview-grid" id="previewGrid"></div>
-      </div>
-    </div>
+  <div class="statusbar">
+    <span>X <b id="statX">&mdash;</b></span>
+    <span>Y <b id="statY">&mdash;</b></span>
+    <span>Size <b id="statSize">&mdash;</b></span>
+    <span>Painted <b id="statPainted">0</b></span>
+    <span class="statusbar-spacer"></span>
+    <span>Tool <b id="statTool">Pen</b></span>
+    <span>Zoom <b id="statZoom">10&times;</b></span>
   </div>
 
 </div>
-
-<div class="statusbar">
-  <span>X <b id="statX">&mdash;</b></span>
-  <span>Y <b id="statY">&mdash;</b></span>
-  <span>Size <b id="statSize">&mdash;</b></span>
-  <span>Painted <b id="statPainted">0</b></span>
-  <span class="statusbar-spacer"></span>
-  <span>Tool <b id="statTool">Pen</b></span>
-  <span>Zoom <b id="statZoom">10&times;</b></span>
-</div>
-
-<footer>
-  Runs entirely in your browser — nothing you draw here is uploaded anywhere. Independent fan-made tool, not officially affiliated with cityofstonks.com.
-</footer>
 
 <script>
 /* =========================================================================
@@ -699,7 +685,7 @@ function renderContextPreview(cv, cx, contextDef) {
   const rows = buildRenderRows(targetHeight, maxHeight);
   const rowCount = rows.length;
 
-  const scale = Math.max(1, Math.min(Math.floor(150 / gridW), Math.floor(176 / rowCount)));
+  const scale = Math.max(1, Math.min(Math.floor(126 / gridW), Math.floor(136 / rowCount)));
   cv.width = gridW * scale;
   cv.height = rowCount * scale;
 
@@ -843,7 +829,6 @@ window.addEventListener('pointerup', endStroke);
 const TOOL_LABELS = { pen: 'Pen', line: 'Line', rect: 'Rect', fill: 'Fill', eyedrop: 'Pick', erase: 'Erase' };
 function updateToolOptionsLabel() {
   const showsBrush = activeTool === 'pen' || activeTool === 'erase';
-  $('toolOptionsLabel').textContent = showsBrush ? `Brush Size — ${TOOL_LABELS[activeTool]}` : `Brush Size (Pen/Erase only)`;
   document.querySelectorAll('.brush-size-row button').forEach((b) => { b.disabled = !showsBrush; b.style.opacity = showsBrush ? 1 : .4; });
 }
 document.querySelectorAll('.tool-btn[data-tool]').forEach((btn) => {
@@ -862,17 +847,24 @@ document.querySelectorAll('.brush-size-row button').forEach((btn) => {
     btn.classList.add('is-on');
   });
 });
-document.querySelectorAll('.zoom-row button').forEach((btn) => {
+document.querySelectorAll('.zoom-mini button').forEach((btn) => {
   btn.addEventListener('click', () => {
     zoom = parseInt(btn.dataset.zoom);
-    document.querySelectorAll('.zoom-row button').forEach((b) => b.classList.remove('is-on'));
+    document.querySelectorAll('.zoom-mini button').forEach((b) => b.classList.remove('is-on'));
     btn.classList.add('is-on');
     $('statZoom').textContent = zoom + '×';
     renderEditorCanvas();
   });
 });
-$('mirrorToggle').addEventListener('change', (e) => { mirrorOn = e.target.checked; });
-$('gridToggle').addEventListener('change', (e) => { showGrid = e.target.checked; renderEditorCanvas(); });
+$('mirrorToggle').addEventListener('change', (e) => {
+  mirrorOn = e.target.checked;
+  e.target.closest('.tool-btn').classList.toggle('is-on', mirrorOn);
+});
+$('gridToggle').addEventListener('change', (e) => {
+  showGrid = e.target.checked;
+  e.target.closest('.tool-btn').classList.toggle('is-on', showGrid);
+  renderEditorCanvas();
+});
 $('undoBtn').addEventListener('click', undo);
 $('redoBtn').addEventListener('click', redo);
 $('randomBtn').addEventListener('click', applyRandomBuilding);
@@ -927,14 +919,19 @@ window.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z'))) { e.preventDefault(); redo(); }
 });
 
-/* ---- docker collapse toggles ---- */
-document.querySelectorAll('.docker-toggle').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const panel = btn.closest('.panel');
-    const collapsed = panel.classList.toggle('collapsed');
-    btn.innerHTML = collapsed ? '&#9656;' : '&#9662;';
-  });
+/* ---- right dock: tabs + mobile slide-in panel ---- */
+function setDockTab(tab) {
+  document.querySelectorAll('.dock-tabs button').forEach((b) => b.classList.toggle('is-on', b.dataset.tab === tab));
+  document.querySelectorAll('.dock-panel').forEach((p) => p.classList.toggle('is-on', p.dataset.tabPanel === tab));
+}
+document.querySelectorAll('.dock-tabs button').forEach((btn) => {
+  btn.addEventListener('click', () => setDockTab(btn.dataset.tab));
 });
+function openDock() { $('dockRight').classList.add('is-open'); $('dockBackdrop').classList.add('is-on'); }
+function closeDock() { $('dockRight').classList.remove('is-open'); $('dockBackdrop').classList.remove('is-on'); }
+function toggleDock() { $('dockRight').classList.contains('is-open') ? closeDock() : openDock(); }
+$('panelsToggleBtn').addEventListener('click', toggleDock);
+$('dockBackdrop').addEventListener('click', closeDock);
 
 /* ---- menu bar — File/Edit/View/Help. Each item just triggers the same
    function or element the toolbar/keyboard already use. ---- */
@@ -963,7 +960,8 @@ document.querySelectorAll('.menu-dropdown [data-action]').forEach((item) => {
     else if (action === 'clear') $('clearBtn').click();
     else if (action === 'toggleGrid') $('gridToggle').click();
     else if (action === 'toggleMirror') $('mirrorToggle').click();
-    else if (zoomMatch) document.querySelector(`.zoom-row button[data-zoom="${zoomMatch[1]}"]`).click();
+    else if (action === 'togglePanels') toggleDock();
+    else if (zoomMatch) document.querySelector(`.zoom-mini button[data-zoom="${zoomMatch[1]}"]`).click();
   });
 });
 
@@ -1049,6 +1047,8 @@ $('importInput').addEventListener('change', (e) => {
   reader.onload = () => {
     try {
       loadBuildingFromPayload(JSON.parse(reader.result));
+      setDockTab('canvas');
+      if (window.innerWidth <= 860) openDock();
     } catch (err) {
       alert("Couldn't read that file — is it a Building Designer export?\n\n" + err.message);
     }
@@ -1219,14 +1219,9 @@ function applyRandomBuilding() {
 }
 
 /* ---- init ---- */
-// A 30-wide canvas at 10x is 300px — fine on desktop, but on a narrow phone
-// that's most of the screen width before any panel or padding, forcing
-// constant horizontal scrolling just to draw. Starting smaller there means
-// the whole canvas is visible at once; the zoom row is still right there
-// to go bigger once you actually need the detail.
 if (window.innerWidth < 760) {
   zoom = 6;
-  document.querySelectorAll('.zoom-row button').forEach((b) => b.classList.toggle('is-on', b.dataset.zoom === '6'));
+  document.querySelectorAll('.zoom-mini button').forEach((b) => b.classList.toggle('is-on', b.dataset.zoom === '6'));
 }
 $('statZoom').textContent = zoom + '×';
 updateToolOptionsLabel();
