@@ -204,7 +204,12 @@ function wirePreviewToggles(container) {
         return;
       }
       wrap.hidden = false;
-      wrap.innerHTML = `<iframe src="${btn.dataset.url}" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      // GitHub Pages serves with cache-control: max-age=600, so a plain
+      // iframe src can silently show a browser-cached copy of the site from
+      // up to 10 minutes ago. Appending a fresh query param each time makes
+      // every Preview click its own cache-busted URL, forcing a real fetch.
+      const freshUrl = btn.dataset.url + (btn.dataset.url.includes('?') ? '&' : '?') + '_fresh=' + Date.now();
+      wrap.innerHTML = `<iframe src="${freshUrl}" referrerpolicy="no-referrer"></iframe>
         <div class="preview-fallback">If the preview above stays blank, the site may block being embedded — <a href="${btn.dataset.url}" target="_blank" rel="noopener">open it directly</a> instead.</div>`;
       btn.textContent = 'Hide Preview';
     });
